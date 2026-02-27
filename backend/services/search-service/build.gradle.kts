@@ -1,0 +1,15 @@
+plugins {
+    id("qticket.spring-service")
+}
+
+dependencies {
+    implementation(libs.spring.boot.starter.web)
+
+    implementation(libs.spring.cloud.eureka.client)
+
+    implementation(project(":backend:platform:observability"))
+    implementation(project(":backend:platform:error-contract"))
+    implementation(project(":backend:platform:events"))
+
+    testImplementation(project(":backend:platform:testing"))
+}

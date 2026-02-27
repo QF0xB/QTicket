@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/build-logic" name="build-logic">
+                <projects>
+                  <project path="$PROJECT_DIR$/build-logic" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/backend" />
+            <option value="$PROJECT_DIR$/backend/edge" />
+            <option value="$PROJECT_DIR$/backend/edge/api-gateway" />
+            <option value="$PROJECT_DIR$/backend/edge/discovery-server" />
+            <option value="$PROJECT_DIR$/backend/platform" />
+            <option value="$PROJECT_DIR$/backend/platform/error-contract" />
+            <option value="$PROJECT_DIR$/backend/platform/events" />
+            <option value="$PROJECT_DIR$/backend/platform/observability" />
+            <option value="$PROJECT_DIR$/backend/platform/security" />
+            <option value="$PROJECT_DIR$/backend/platform/testing" />
+            <option value="$PROJECT_DIR$/backend/services" />
+            <option value="$PROJECT_DIR$/backend/services/auth-service" />
+            <option value="$PROJECT_DIR$/backend/services/file-service" />
+            <option value="$PROJECT_DIR$/backend/services/mail-service" />
+            <option value="$PROJECT_DIR$/backend/services/notification-service" />
+            <option value="$PROJECT_DIR$/backend/services/search-service" />
+            <option value="$PROJECT_DIR$/backend/services/ticket-service" />
+            <option value="$PROJECT_DIR$/build-logic" />
+            <option value="$PROJECT_DIR$/codegen" />
+            <option value="$PROJECT_DIR$/codegen/ts-client" />
+            <option value="$PROJECT_DIR$/contracts" />
+            <option value="$PROJECT_DIR$/contracts/openapi" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
