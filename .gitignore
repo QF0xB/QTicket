@@ -1,0 +1,11 @@
+# Nix
+.devenv
+.direnv
+.devenv.flake.nix
+
+# Build
+.gradle
+gradle/wrapper
+build
+**/build
+build-logic/.kotlin
