@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     api(libs.swagger.annotations)
+
+    implementation(libs.spring.boot.starter.web)
 }

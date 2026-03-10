@@ -89,19 +89,19 @@ registerSpringServerGeneration(
     name = "auth",
     specFile = "auth.yaml",
     targetProjectPath = ":backend:services:auth-service",
-    basePackage = "dev.qticket.auth"
+    basePackage = "de.qf0xb.qticket.auth"
 )
 
 registerSpringServerGeneration(
     name = "ticket",
     specFile = "ticket.yaml",
     targetProjectPath = ":backend:services:ticket-service",
-    basePackage = "dev.qticket.ticket"
+    basePackage = "de.qf0xb.qticket.ticket"
 )
 
 registerSpringServerGeneration(
     name = "file",
     specFile = "file.yaml",
     targetProjectPath = ":backend:services:file-service",
-    basePackage = "dev.qticket.file"
+    basePackage = "de.qf0xb.qticket.file"
 )

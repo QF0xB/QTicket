@@ -1,0 +1,39 @@
+components:
+  schemas:
+    ProblemDetail:
+      type: object
+      description: RFC 9457 problem details
+      properties:
+        type:
+          type: string
+          format: uri
+          description: Problem type URI (defaults to "about:blank" if omitted)
+        title:
+          type: string
+          description: Short, human-readable summary of the problem type
+        status:
+          type: integer
+          format: int32
+          description: HTTP status code generated for this occurrence
+        detail:
+          type: string
+          description: Human-readable explanation specific to this occurrence
+        instance:
+          type: string
+          format: uri
+          description: URI reference identifying this specific occurrence
+        # extension members per RFC 9457
+        errorCode:
+          type: string
+          description: Application-specific error code
+        errors:
+          type: array
+          description: Field-level or sub-error details
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+      required: [status, title]

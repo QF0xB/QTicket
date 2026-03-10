@@ -18,9 +18,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c3540b5-1105-4484-a2fe-30a1235d9987" name="Changes" comment="feature/license: add Apache 2.0 license and initial project setup">
-      <changelist_data name="Quirin Brändli" email="qbraendli@pm.me" automatic="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0c3540b5-1105-4484-a2fe-30a1235d9987" name="Changes" comment="feature/bootstrap: initialize project structure with essential modules&#10;&#10;Signed-off-by: Quirin Brändli &lt;qbraendli@pm.me&gt;">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/platform/error-contract/qticket.backend.platform.error-contract.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/services/auth-service/qticket.backend.services.auth-service.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/error/GlobalErrorHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/api/ApiUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/controller/AuthApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/error-contract/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contracts/openapi/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/openapi/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +94,13 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="qticket" type="f1a62948:ProjectNode" />
                 <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="openapi" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
               </path>
               <path>
@@ -88,14 +108,23 @@
                 <item name="qticket" type="f1a62948:ProjectNode" />
                 <item name="qticket" type="2d1252cf:ModuleNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="qticket" type="f1a62948:ProjectNode" />
                 <item name="qticket" type="2d1252cf:ModuleNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
+                <item name="auth-service" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="backend" type="2d1252cf:ModuleNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
+                <item name="auth-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
@@ -103,34 +132,8 @@
                 <item name="qticket" type="f1a62948:ProjectNode" />
                 <item name="qticket" type="2d1252cf:ModuleNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="qticket" type="f1a62948:ProjectNode" />
-                <item name="qticket" type="2d1252cf:ModuleNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="qticket" type="f1a62948:ProjectNode" />
-                <item name="qticket" type="2d1252cf:ModuleNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="qticket" type="f1a62948:ProjectNode" />
-                <item name="qticket" type="2d1252cf:ModuleNode" />
-                <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
+                <item name="auth-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
@@ -139,10 +142,40 @@
                 <item name="qticket" type="f1a62948:ProjectNode" />
                 <item name="qticket" type="2d1252cf:ModuleNode" />
                 <item name="backend" type="2d1252cf:ModuleNode" />
-                <item name="edge" type="2d1252cf:ModuleNode" />
-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+                <item name="services" type="2d1252cf:ModuleNode" />
+                <item name="auth-service" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="contracts" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="contracts" type="2d1252cf:ModuleNode" />
+                <item name="openapi" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="contracts" type="2d1252cf:ModuleNode" />
+                <item name="openapi" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="qticket" type="f1a62948:ProjectNode" />
+                <item name="qticket" type="2d1252cf:ModuleNode" />
+                <item name="contracts" type="2d1252cf:ModuleNode" />
+                <item name="openapi" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="openapi" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -154,6 +187,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="OpenAPI" />
         <option value="Class" />
       </list>
     </option>
@@ -176,6 +210,9 @@
     <commands />
     <urls />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -188,6 +225,7 @@
   "keyToString": {
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "Gradle.Build QTicket.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
     "Gradle.QTicket [:backend:edge:api-gateway:bootRun].executor": "Run",
     "Gradle.QTicket [:backend:edge:api-gateway:build].executor": "Run",
     "Gradle.QTicket [:backend:platform:api-gateway:assemble].executor": "Run",
@@ -196,10 +234,12 @@
     "Gradle.QTicket [:backend:platform:api-gateway:jar].executor": "Run",
     "Gradle.QTicket [:backend:services:auth-service:bootRun].executor": "Run",
     "Gradle.QTicket [:codegen:ts-client:generateTsClient].executor": "Run",
+    "Gradle.QTicket [:contracts:openapi:generateAuthServer].executor": "Run",
     "Gradle.QTicket [bootJar].executor": "Run",
     "Gradle.QTicket [build].executor": "Run",
     "Gradle.QTicket [clean].executor": "Run",
     "Gradle.QTicket [compileJava].executor": "Run",
+    "Gradle.QTicket [generateAuthServer].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "NIXITCH_NIXPKGS_CONFIG": "/etc/nix/nixpkgs-config.nix",
     "NIXITCH_NIX_CONF_DIR": "",
@@ -217,10 +257,12 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Shell Script..envrc.executor": "Run",
     "Spring Boot.ApiGateway.executor": "Run",
+    "Spring Boot.AuthServiceApplication.executor": "Run",
     "Spring Boot.DiscoveryServerApplication.executor": "Run",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/q.braendli/projects/QTicket",
     "node.js.detected.package.eslint": "true",
@@ -228,45 +270,46 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "preferences.sourceCode.JAVA",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/contracts/openapi/specs" />
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.qf0xb.qticket.auth.api" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiGateway">
-    <configuration name="QTicket [:backend:edge:api-gateway:bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":backend:edge:api-gateway:bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="AuthServiceApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.QTicket [:contracts:openapi:generateAuthServer]">
     <configuration name="QTicket [:backend:edge:api-gateway:build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -292,7 +335,7 @@
       <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
-    <configuration name="QTicket [:backend:services:auth-service:bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="QTicket [:contracts:openapi:generateAuthServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -303,32 +346,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value=":backend:services:auth-service:bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="QTicket [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
+            <option value=":contracts:openapi:generateAuthServer" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -367,6 +385,31 @@
       <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
+    <configuration name="QTicket [generateAuthServer]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateAuthServer" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="QTicket.backend.platform.main" />
       <method v="2">
@@ -384,6 +427,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="qticket.backend.services.auth-service.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="de.qf0xb.qticket.auth.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DiscoveryServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="qticket.backend.edge.discovery-server.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="de.qf0xb.qticket.discovery.DiscoveryServerApplication" />
@@ -391,13 +442,40 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="auth.yaml" type="SwaggerCodegen" editBeforeRun="true" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="customTemplatesPath" value="" />
+      <option name="generateToPath" value="$PROJECT_DIR$/backend/edge/discovery-server/src/main/gen" />
+      <option name="generationParameters">
+        <list />
+      </option>
+      <option name="generatorType" value="OPENAPI_GENERATOR_V7" />
+      <option name="jdkPath" value="/nix/store/g3a9f18qfl5rj7f22v4px637n8xmzn70-jetbrains-jdk-jcef-21.0.9-b1163.86/lib/openjdk/bin/java" />
+      <option name="language" value="java" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="specificationPath" value="$PROJECT_DIR$/contracts/openapi/auth.yaml" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:build]" />
+      <item itemvalue="Gradle.QTicket [:contracts:openapi:generateAuthServer]" />
+      <item itemvalue="Gradle.QTicket [clean]" />
+      <item itemvalue="Gradle.QTicket [generateAuthServer]" />
+      <item itemvalue="OpenAPI/Swagger Code Generator.auth.yaml" />
+      <item itemvalue="Spring Boot.ApiGateway" />
+      <item itemvalue="Spring Boot.AuthServiceApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServerApplication" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.QTicket [:contracts:openapi:generateAuthServer]" />
+        <item itemvalue="Gradle.QTicket [generateAuthServer]" />
+        <item itemvalue="OpenAPI/Swagger Code Generator.auth.yaml" />
         <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:build]" />
         <item itemvalue="Gradle.QTicket [clean]" />
-        <item itemvalue="Gradle.QTicket [build]" />
-        <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:bootRun]" />
-        <item itemvalue="Gradle.QTicket [:backend:services:auth-service:bootRun]" />
       </list>
     </recent_temporary>
   </component>
@@ -428,7 +506,7 @@
       <workItem from="1772184767351" duration="565000" />
       <workItem from="1772185347549" duration="32000" />
       <workItem from="1772185431879" duration="224000" />
-      <workItem from="1772185665239" duration="7392000" />
+      <workItem from="1772185665239" duration="16290000" />
     </task>
     <task id="LOCAL-00001" summary="feature/license: add Apache 2.0 license and initial project setup">
       <option name="closed" value="true" />
@@ -438,7 +516,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772157760883</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chore/gitignore: add common ignore patterns">
+      <option name="closed" value="true" />
+      <created>1772200075119</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1772200075119</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feature/bootstrap: initialize project structure with essential modules&#10;&#10;Signed-off-by: Quirin Brändli &lt;qbraendli@pm.me&gt;">
+      <option name="closed" value="true" />
+      <created>1772200307348</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772200307348</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +570,9 @@
     <MESSAGE value="feature/add-license-and-initial-project-setup" />
     <MESSAGE value="feature/license" />
     <MESSAGE value="feature/license: add Apache 2.0 license and initial project setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature/license: add Apache 2.0 license and initial project setup" />
+    <MESSAGE value="chore/gitignore: add common ignore patterns" />
+    <MESSAGE value="feature/bootstrap: initialize project structure with essential modules&#10;&#10;Signed-off-by: Quirin Brändli &lt;qbraendli@pm.me&gt;" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature/bootstrap: initialize project structure with essential modules&#10;&#10;Signed-off-by: Quirin Brändli &lt;qbraendli@pm.me&gt;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

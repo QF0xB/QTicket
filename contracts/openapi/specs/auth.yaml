@@ -1,0 +1,258 @@
+openapi: 3.1.0
+info:
+  title: QTicket Auth API
+  description: Authentication, user and Roles
+  version: 0.1.0
+servers:
+  - url: /auth
+
+paths:
+  /login:
+    post:
+      summary: Login with email/username and password
+      operationId: login
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid credentials
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: 2FA required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFaChallenge'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /login/2fa:
+    post:
+      summary: Complete login with second factor
+      operationId: verify2fa
+      tags: [ Auth ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFaVerifyRequest'
+      responses:
+        '200':
+          description: Successful login after 2FA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Invalid or expired 2FA challenge
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /token/refresh:
+    post:
+      summary: Refresh access token
+      operationId: refreshToken4
+      tags: [ Auth ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenRequest'
+      responses:
+        '200':
+          description: Successful token refresh
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Refresh token expired
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /logout:
+    post:
+      summary: Logout with refresh token
+      operationId: logout
+      tags: [Auth]
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Successfully logged out
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /me:
+    get:
+      summary: Get current user information
+      operationId: getCurrentUser
+      tags: [ Auth ]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    # Login schema
+    LoginRequest:
+      type: object
+      required: [login, password]
+      properties:
+        login:
+          type: string
+          description: Email or username
+        password:
+          type: string
+          format: password
+    LoginResponse:
+      type: object
+      required: [ accessToken, refreshToken, expiresIn ]
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        expiresIn:
+          type: integer
+          format: int64
+          description: Access token lifetime in seconds
+
+    # Two-factor challenge schema
+    TwoFaMethod:
+      type: string
+      enum: [ totp, passkey ]
+
+    TwoFaChallenge:
+      type: object
+      required: [ challengeId, methods ]
+      properties:
+        methods:
+          type: array
+          description: Supported methods for two-factor authentication
+          items:
+            $ref: '#/components/schemas/TwoFaMethod'
+        challengeId:
+          type: string
+          description: Challenge ID for two-factor authentication
+        # For passkey I'll add a WebAuthn challenge object here
+        publicKeyCredentialRequestOptions:
+          type: object
+          description: WebAuthn options for passkey challenges (opaque to clients you control)
+
+    # Two-factor verification schema
+    TwoFaVerifyRequest:
+      type: object
+      required: [ challengeId, method ]
+      properties:
+        challengeId:
+          type: string
+          description: Challenge ID for two-factor authentication
+        method:
+          $ref: '#/components/schemas/TwoFaMethod'
+        code:
+          type: string
+          description: Code for two-factor authentication, for example a TOTP code
+        passkeyAssertion:
+          type: string
+          description: Passkey assertion for two-factor authentication
+
+    # User info schema
+    UserInfo:
+      type: object
+      required: [ id ]
+      properties:
+        id:
+          type: string
+          description: User ID
+        email:
+          type: string
+          description: Email address
+        username:
+          type: string
+          description: Username
+
+    # Refresh token schema
+    RefreshTokenRequest:
+      type: object
+      required: [ refreshToken ]
+      properties:
+        refreshToken:
+          type: string
+          description: Refresh token
