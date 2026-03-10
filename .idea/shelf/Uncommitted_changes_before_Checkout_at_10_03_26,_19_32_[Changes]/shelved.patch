@@ -1,0 +1,361 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AIAssistantCustomInstructionsStorage\">\n    <option name=\"instructions\">\n      <map>\n        <entry key=\"AIAssistant.VCS.GenerateCommitMessage\">\n          <value>\n            <AIAssistantStoredInstruction>\n              <option name=\"actionId\" value=\"AIAssistant.VCS.GenerateCommitMessage\" />\n              <option name=\"content\" value=\"Avoid overly verbose descriptions or unnecessary details.&#10;Always do either feature/{name}, fix/{name}, etc to start the message. Only one word as name.&#10;\" />\n            </AIAssistantStoredInstruction>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"0c3540b5-1105-4484-a2fe-30a1235d9987\" name=\"Changes\" comment=\"feature/license: add Apache 2.0 license and initial project setup\">\n      <changelist_data name=\"Quirin Brändli\" email=\"qbraendli@pm.me\" automatic=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"EmbeddingIndexingInfo\">\n    <option name=\"cachedIndexableFilesCount\" value=\"616\" />\n    <option name=\"fileBasedEmbeddingIndicesEnabled\" value=\"true\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n    <projectState path=\"$PROJECT_DIR$/backend/auth-service\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"build setup\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"api-gateway\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"api-gateway\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"api-gateway\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"qticket\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"qticket\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"backend\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"edge\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"api-gateway\" type=\"2d1252cf:ModuleNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"build\" type=\"c8890929:TasksNode$1\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\n      <list>\n        <option value=\"Quirin Brändli &lt;qbraendli@pm.me&gt;\" />\n        <option value=\"Quirin Brändli &lt;q&gt;\" />\n      </list>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"SIGN_OFF_COMMIT\" value=\"true\" />\n  </component>\n  <component name=\"GradleScriptDefinitionsStorage\" workingDir=\"$PROJECT_DIR$\" gradleHome=\"$PROJECT_DIR$/.gradle/wrapper/dists/gradle-9.3.0-bin/79n14ral3mx1ozqr3csh2u872/gradle-9.3.0\" javaHome=\"$PROJECT_DIR$/.devenv/profile/lib/openjdk\" gradleVersion=\"9.3.0\" />\n  <component name=\"MaliciousPackageCheckinHandlerState\">\n    <option name=\"packageCheck\" value=\"true\" />\n  </component>\n  <component name=\"McpProjectServerCommands\">\n    <commands />\n    <urls />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 3\n}</component>\n  <component name=\"ProjectId\" id=\"3AEU5MHP05sPxds8OtrCoJfugxi\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_MARK_IGNORED_FILES_AS_EXCLUDED\": \"true\",\n    \"Gradle.Build QTicket.executor\": \"Run\",\n    \"Gradle.QTicket [:backend:edge:api-gateway:bootRun].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:edge:api-gateway:build].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:platform:api-gateway:assemble].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:platform:api-gateway:build].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:platform:api-gateway:jar build clean jar].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:platform:api-gateway:jar].executor\": \"Run\",\n    \"Gradle.QTicket [:backend:services:auth-service:bootRun].executor\": \"Run\",\n    \"Gradle.QTicket [:codegen:ts-client:generateTsClient].executor\": \"Run\",\n    \"Gradle.QTicket [bootJar].executor\": \"Run\",\n    \"Gradle.QTicket [build].executor\": \"Run\",\n    \"Gradle.QTicket [clean].executor\": \"Run\",\n    \"Gradle.QTicket [compileJava].executor\": \"Run\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"NIXITCH_NIXPKGS_CONFIG\": \"/etc/nix/nixpkgs-config.nix\",\n    \"NIXITCH_NIX_CONF_DIR\": \"\",\n    \"NIXITCH_NIX_OTHER_STORES\": \"\",\n    \"NIXITCH_NIX_PATH\": \"nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels\",\n    \"NIXITCH_NIX_PROFILES\": \"/run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/q.braendli /home/q.braendli/.local/state/nix/profile /nix/profile /home/q.braendli/.nix-profile\",\n    \"NIXITCH_NIX_REMOTE\": \"\",\n    \"NIXITCH_NIX_USER_PROFILE_DIR\": \"/nix/var/nix/profiles/per-user/q.braendli\",\n    \"RequestMappingsPanelOrder0\": \"0\",\n    \"RequestMappingsPanelOrder1\": \"1\",\n    \"RequestMappingsPanelWidth0\": \"75\",\n    \"RequestMappingsPanelWidth1\": \"75\",\n    \"RunOnceActivity.MCP Project settings loaded\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\n    \"Shell Script..envrc.executor\": \"Run\",\n    \"Spring Boot.ApiGateway.executor\": \"Run\",\n    \"Spring Boot.DiscoveryServerApplication.executor\": \"Run\",\n    \"git-widget-placeholder\": \"master\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/home/q.braendli/projects/QTicket\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"project.structure.last.edited\": \"SDKs\",\n    \"project.structure.proportion\": \"0.15\",\n    \"project.structure.side.proportion\": \"0.2\",\n    \"run.code.analysis.last.selected.profile\": \"pProject Default\",\n    \"settings.editor.selected.configurable\": \"preferences.sourceCode.JAVA\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Spring Boot.ApiGateway\">\n    <configuration name=\"QTicket [:backend:edge:api-gateway:bootRun]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\":backend:edge:api-gateway:bootRun\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <RunAsTest>false</RunAsTest>\n      <GradleProfilingDisabled>false</GradleProfilingDisabled>\n      <GradleCoverageDisabled>false</GradleCoverageDisabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"QTicket [:backend:edge:api-gateway:build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\":backend:edge:api-gateway:build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <RunAsTest>false</RunAsTest>\n      <GradleProfilingDisabled>false</GradleProfilingDisabled>\n      <GradleCoverageDisabled>false</GradleCoverageDisabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"QTicket [:backend:services:auth-service:bootRun]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\":backend:services:auth-service:bootRun\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <RunAsTest>false</RunAsTest>\n      <GradleProfilingDisabled>false</GradleProfilingDisabled>\n      <GradleCoverageDisabled>false</GradleCoverageDisabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"QTicket [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <RunAsTest>false</RunAsTest>\n      <GradleProfilingDisabled>false</GradleProfilingDisabled>\n      <GradleCoverageDisabled>false</GradleCoverageDisabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"QTicket [clean]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"clean\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <RunAsTest>false</RunAsTest>\n      <GradleProfilingDisabled>false</GradleProfilingDisabled>\n      <GradleCoverageDisabled>false</GradleCoverageDisabled>\n      <method v=\"2\" />\n    </configuration>\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\n      <module name=\"QTicket.backend.platform.main\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\n      <option name=\"filePath\" />\n      <method v=\"2\" />\n    </configuration>\n    <configuration name=\"ApiGateway\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"qticket.backend.edge.api-gateway.main\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"de.qf0xb.qticket.gateway.ApiGateway\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"DiscoveryServerApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"qticket.backend.edge.discovery-server.main\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"de.qf0xb.qticket.discovery.DiscoveryServerApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Gradle.QTicket [:backend:edge:api-gateway:build]\" />\n        <item itemvalue=\"Gradle.QTicket [clean]\" />\n        <item itemvalue=\"Gradle.QTicket [build]\" />\n        <item itemvalue=\"Gradle.QTicket [:backend:edge:api-gateway:bootRun]\" />\n        <item itemvalue=\"Gradle.QTicket [:backend:services:auth-service:bootRun]\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90\" />\n        <option value=\"bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"0c3540b5-1105-4484-a2fe-30a1235d9987\" name=\"Changes\" comment=\"\" />\n      <created>1772157039869</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1772157039869</updated>\n      <workItem from=\"1772157577922\" duration=\"2473000\" />\n      <workItem from=\"1772160061043\" duration=\"135000\" />\n      <workItem from=\"1772160208694\" duration=\"483000\" />\n      <workItem from=\"1772160696947\" duration=\"1741000\" />\n      <workItem from=\"1772177978077\" duration=\"769000\" />\n      <workItem from=\"1772178774474\" duration=\"19000\" />\n      <workItem from=\"1772178805734\" duration=\"247000\" />\n      <workItem from=\"1772181828116\" duration=\"137000\" />\n      <workItem from=\"1772184340360\" duration=\"411000\" />\n      <workItem from=\"1772184767351\" duration=\"565000\" />\n      <workItem from=\"1772185347549\" duration=\"32000\" />\n      <workItem from=\"1772185431879\" duration=\"224000\" />\n      <workItem from=\"1772185665239\" duration=\"7392000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"feature/license: add Apache 2.0 license and initial project setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772157760883</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772157760883</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"UnknownFeatures\">\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework:spring-core\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.security:spring-security-core\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:jakarta.validation:jakarta.validation-api\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:io.projectreactor:reactor-core\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.cloud:spring-cloud-context\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.hibernate.validator:hibernate-validator\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:jakarta.ws.rs:jakarta.ws.rs-api\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.springframework.boot:spring-boot\" />\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\".envrc\" />\n    <option featureType=\"dependencySupport\" implementationName=\"java:org.projectlombok:lombok\" />\n  </component>\n  <component name=\"UpdateCopyrightCheckinHandler\">\n    <option name=\"UPDATE_COPYRIGHT\" value=\"true\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT\" value=\"true\" />\n    <MESSAGE value=\"Add Apache 2.0 License and IntelliJ IDEA configuration files\" />\n    <MESSAGE value=\"feature/add-license-and-initial-project-setup\" />\n    <MESSAGE value=\"feature/license\" />\n    <MESSAGE value=\"feature/license: add Apache 2.0 license and initial project setup\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"feature/license: add Apache 2.0 license and initial project setup\" />\n    <option name=\"OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT\" value=\"true\" />\n    <option name=\"REFORMAT_BEFORE_PROJECT_COMMIT\" value=\"true\" />\n    <option name=\"REARRANGE_BEFORE_PROJECT_COMMIT\" value=\"true\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0a9c7080b498e783412e8a46d1dc9730fa7aef17)
++++ b/.idea/workspace.xml	(date 1773167526012)
+@@ -20,7 +20,10 @@
+   <component name="ChangeListManager">
+     <list default="true" id="0c3540b5-1105-4484-a2fe-30a1235d9987" name="Changes" comment="feature/license: add Apache 2.0 license and initial project setup">
+       <changelist_data name="Quirin Brändli" email="qbraendli@pm.me" automatic="false" />
+-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/devenv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.lock" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,98 +55,6 @@
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                 <item name="qticket" type="f1a62948:ProjectNode" />
+               </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="build" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="build setup" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="build" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="application" type="c8890929:TasksNode$1" />
+-              </path>
+-              <path>
+-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="qticket" type="f1a62948:ProjectNode" />
+-                <item name="qticket" type="2d1252cf:ModuleNode" />
+-                <item name="backend" type="2d1252cf:ModuleNode" />
+-                <item name="edge" type="2d1252cf:ModuleNode" />
+-                <item name="api-gateway" type="2d1252cf:ModuleNode" />
+-                <item name="Tasks" type="e4a08cd1:TasksNode" />
+-                <item name="build" type="c8890929:TasksNode$1" />
+-              </path>
+             </expand>
+             <select />
+           </tree_state>
+@@ -168,7 +79,7 @@
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="SIGN_OFF_COMMIT" value="true" />
+   </component>
+-  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$PROJECT_DIR$/.gradle/wrapper/dists/gradle-9.3.0-bin/79n14ral3mx1ozqr3csh2u872/gradle-9.3.0" javaHome="$PROJECT_DIR$/.devenv/profile/lib/openjdk" gradleVersion="9.3.0" />
++  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$PROJECT_DIR$/.gradle/wrapper/dists/gradle-9.3.1-bin/23ovyewtku6u96viwx3xl3oks/gradle-9.3.1" javaHome="/nix/store/3b7hv1zyqmdyvrvl4zfib228238mnfma-openjdk-25.0.2+10/lib/openjdk" gradleVersion="9.3.1" />
+   <component name="MaliciousPackageCheckinHandlerState">
+     <option name="packageCheck" value="true" />
+   </component>
+@@ -220,19 +131,22 @@
+     "Shell Script..envrc.executor": "Run",
+     "Spring Boot.ApiGateway.executor": "Run",
+     "Spring Boot.DiscoveryServerApplication.executor": "Run",
+-    "git-widget-placeholder": "master",
++    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
++    "git-widget-placeholder": "main",
++    "junie.onboarding.icon.badge.shown": "true",
+     "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "/home/q.braendli/projects/QTicket",
++    "last_opened_file_path": "/home/q.braendli/projects/QTicket/.gradle",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+     "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "SDKs",
++    "project.structure.last.edited": "Project",
+     "project.structure.proportion": "0.15",
+     "project.structure.side.proportion": "0.2",
+     "run.code.analysis.last.selected.profile": "pProject Default",
+-    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA",
++    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
++    "to.speed.mode.migration.done": "true",
+     "vue.rearranger.settings.migration": "true"
+   }
+ }]]></component>
+@@ -373,10 +287,6 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+-      <option name="filePath" />
+-      <method v="2" />
+-    </configuration>
+     <configuration name="ApiGateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+       <module name="qticket.backend.edge.api-gateway.main" />
+       <option name="SPRING_BOOT_MAIN_CLASS" value="de.qf0xb.qticket.gateway.ApiGateway" />
+@@ -393,19 +303,19 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:build]" />
+         <item itemvalue="Gradle.QTicket [clean]" />
+         <item itemvalue="Gradle.QTicket [build]" />
++        <item itemvalue="Gradle.QTicket [:backend:services:auth-service:bootRun]" />
++        <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:build]" />
+         <item itemvalue="Gradle.QTicket [:backend:edge:api-gateway:bootRun]" />
+-        <item itemvalue="Gradle.QTicket [:backend:services:auth-service:bootRun]" />
+       </list>
+     </recent_temporary>
+   </component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
++        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
++        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -429,6 +339,17 @@
+       <workItem from="1772185347549" duration="32000" />
+       <workItem from="1772185431879" duration="224000" />
+       <workItem from="1772185665239" duration="7392000" />
++      <workItem from="1773164054277" duration="367000" />
++      <workItem from="1773164440541" duration="53000" />
++      <workItem from="1773164514084" duration="844000" />
++      <workItem from="1773165423755" duration="18000" />
++      <workItem from="1773165506159" duration="74000" />
++      <workItem from="1773165750075" duration="19000" />
++      <workItem from="1773166025512" duration="32000" />
++      <workItem from="1773166066843" duration="12000" />
++      <workItem from="1773166090539" duration="42000" />
++      <workItem from="1773166141247" duration="997000" />
++      <workItem from="1773167161250" duration="365000" />
+     </task>
+     <task id="LOCAL-00001" summary="feature/license: add Apache 2.0 license and initial project setup">
+       <option name="closed" value="true" />
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Nix\n.devenv\n.direnv\n.devenv.flake.nix\n\n# Build\n.gradle\ngradle/wrapper\nbuild\n**/build\nbuild-logic/.kotlin
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision 0a9c7080b498e783412e8a46d1dc9730fa7aef17)
++++ b/.gitignore	(date 1773166934634)
+@@ -5,7 +5,6 @@
+ 
+ # Build
+ .gradle
+-gradle/wrapper
+ build
+ **/build
+ build-logic/.kotlin
+\ No newline at end of file
+Index: devenv.lock
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"nodes\": {\n    \"devenv\": {\n      \"locked\": {\n        \"dir\": \"src/modules\",\n        \"lastModified\": 1772143911,\n        \"owner\": \"cachix\",\n        \"repo\": \"devenv\",\n        \"rev\": \"83c4b5682b84fe04c049970792f38d5879d3c0f1\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"dir\": \"src/modules\",\n        \"owner\": \"cachix\",\n        \"repo\": \"devenv\",\n        \"type\": \"github\"\n      }\n    },\n    \"flake-compat\": {\n      \"flake\": false,\n      \"locked\": {\n        \"lastModified\": 1767039857,\n        \"owner\": \"NixOS\",\n        \"repo\": \"flake-compat\",\n        \"rev\": \"5edf11c44bc78a0d334f6334cdaf7d60d732daab\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"NixOS\",\n        \"repo\": \"flake-compat\",\n        \"type\": \"github\"\n      }\n    },\n    \"git-hooks\": {\n      \"inputs\": {\n        \"flake-compat\": \"flake-compat\",\n        \"gitignore\": \"gitignore\",\n        \"nixpkgs\": [\n          \"nixpkgs\"\n        ]\n      },\n      \"locked\": {\n        \"lastModified\": 1772024342,\n        \"owner\": \"cachix\",\n        \"repo\": \"git-hooks.nix\",\n        \"rev\": \"6e34e97ed9788b17796ee43ccdbaf871a5c2b476\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"cachix\",\n        \"repo\": \"git-hooks.nix\",\n        \"type\": \"github\"\n      }\n    },\n    \"gitignore\": {\n      \"inputs\": {\n        \"nixpkgs\": [\n          \"git-hooks\",\n          \"nixpkgs\"\n        ]\n      },\n      \"locked\": {\n        \"lastModified\": 1762808025,\n        \"owner\": \"hercules-ci\",\n        \"repo\": \"gitignore.nix\",\n        \"rev\": \"cb5e3fdca1de58ccbc3ef53de65bd372b48f567c\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"hercules-ci\",\n        \"repo\": \"gitignore.nix\",\n        \"type\": \"github\"\n      }\n    },\n    \"nixpkgs\": {\n      \"inputs\": {\n        \"nixpkgs-src\": \"nixpkgs-src\"\n      },\n      \"locked\": {\n        \"lastModified\": 1770434727,\n        \"owner\": \"cachix\",\n        \"repo\": \"devenv-nixpkgs\",\n        \"rev\": \"8430f16a39c27bdeef236f1eeb56f0b51b33d348\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"cachix\",\n        \"ref\": \"rolling\",\n        \"repo\": \"devenv-nixpkgs\",\n        \"type\": \"github\"\n      }\n    },\n    \"nixpkgs-src\": {\n      \"flake\": false,\n      \"locked\": {\n        \"lastModified\": 1769922788,\n        \"narHash\": \"sha256-H3AfG4ObMDTkTJYkd8cz1/RbY9LatN5Mk4UF48VuSXc=\",\n        \"owner\": \"NixOS\",\n        \"repo\": \"nixpkgs\",\n        \"rev\": \"207d15f1a6603226e1e223dc79ac29c7846da32e\",\n        \"type\": \"github\"\n      },\n      \"original\": {\n        \"owner\": \"NixOS\",\n        \"ref\": \"nixpkgs-unstable\",\n        \"repo\": \"nixpkgs\",\n        \"type\": \"github\"\n      }\n    },\n    \"root\": {\n      \"inputs\": {\n        \"devenv\": \"devenv\",\n        \"git-hooks\": \"git-hooks\",\n        \"nixpkgs\": \"nixpkgs\",\n        \"pre-commit-hooks\": [\n          \"git-hooks\"\n        ]\n      }\n    }\n  },\n  \"root\": \"root\",\n  \"version\": 7\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/devenv.lock b/devenv.lock
+--- a/devenv.lock	(revision 0a9c7080b498e783412e8a46d1dc9730fa7aef17)
++++ b/devenv.lock	(date 1773161035958)
+@@ -3,10 +3,11 @@
+     "devenv": {
+       "locked": {
+         "dir": "src/modules",
+-        "lastModified": 1772143911,
++        "lastModified": 1773077419,
++        "narHash": "sha256-Vr3Zrg4DEm4xy0StawiTEUs8TXruj1WdRZyDhlq1aPg=",
+         "owner": "cachix",
+         "repo": "devenv",
+-        "rev": "83c4b5682b84fe04c049970792f38d5879d3c0f1",
++        "rev": "2105b1a0272e32b0d6a9e213b1c381ab4ae4a692",
+         "type": "github"
+       },
+       "original": {
+@@ -16,71 +17,16 @@
+         "type": "github"
+       }
+     },
+-    "flake-compat": {
+-      "flake": false,
+-      "locked": {
+-        "lastModified": 1767039857,
+-        "owner": "NixOS",
+-        "repo": "flake-compat",
+-        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+-        "type": "github"
+-      },
+-      "original": {
+-        "owner": "NixOS",
+-        "repo": "flake-compat",
+-        "type": "github"
+-      }
+-    },
+-    "git-hooks": {
+-      "inputs": {
+-        "flake-compat": "flake-compat",
+-        "gitignore": "gitignore",
+-        "nixpkgs": [
+-          "nixpkgs"
+-        ]
+-      },
+-      "locked": {
+-        "lastModified": 1772024342,
+-        "owner": "cachix",
+-        "repo": "git-hooks.nix",
+-        "rev": "6e34e97ed9788b17796ee43ccdbaf871a5c2b476",
+-        "type": "github"
+-      },
+-      "original": {
+-        "owner": "cachix",
+-        "repo": "git-hooks.nix",
+-        "type": "github"
+-      }
+-    },
+-    "gitignore": {
+-      "inputs": {
+-        "nixpkgs": [
+-          "git-hooks",
+-          "nixpkgs"
+-        ]
+-      },
+-      "locked": {
+-        "lastModified": 1762808025,
+-        "owner": "hercules-ci",
+-        "repo": "gitignore.nix",
+-        "rev": "cb5e3fdca1de58ccbc3ef53de65bd372b48f567c",
+-        "type": "github"
+-      },
+-      "original": {
+-        "owner": "hercules-ci",
+-        "repo": "gitignore.nix",
+-        "type": "github"
+-      }
+-    },
+     "nixpkgs": {
+       "inputs": {
+         "nixpkgs-src": "nixpkgs-src"
+       },
+       "locked": {
+-        "lastModified": 1770434727,
++        "lastModified": 1772749504,
++        "narHash": "sha256-eqtQIz0alxkQPym+Zh/33gdDjkkch9o6eHnMPnXFXN0=",
+         "owner": "cachix",
+         "repo": "devenv-nixpkgs",
+-        "rev": "8430f16a39c27bdeef236f1eeb56f0b51b33d348",
++        "rev": "08543693199362c1fddb8f52126030d0d374ba2e",
+         "type": "github"
+       },
+       "original": {
+@@ -93,11 +39,11 @@
+     "nixpkgs-src": {
+       "flake": false,
+       "locked": {
+-        "lastModified": 1769922788,
+-        "narHash": "sha256-H3AfG4ObMDTkTJYkd8cz1/RbY9LatN5Mk4UF48VuSXc=",
++        "lastModified": 1772173633,
++        "narHash": "sha256-MOH58F4AIbCkh6qlQcwMycyk5SWvsqnS/TCfnqDlpj4=",
+         "owner": "NixOS",
+         "repo": "nixpkgs",
+-        "rev": "207d15f1a6603226e1e223dc79ac29c7846da32e",
++        "rev": "c0f3d81a7ddbc2b1332be0d8481a672b4f6004d6",
+         "type": "github"
+       },
+       "original": {
+@@ -110,14 +56,10 @@
+     "root": {
+       "inputs": {
+         "devenv": "devenv",
+-        "git-hooks": "git-hooks",
+-        "nixpkgs": "nixpkgs",
+-        "pre-commit-hooks": [
+-          "git-hooks"
+-        ]
++        "nixpkgs": "nixpkgs"
+       }
+     }
+   },
+   "root": "root",
+   "version": 7
+-}
++}
+\ No newline at end of file

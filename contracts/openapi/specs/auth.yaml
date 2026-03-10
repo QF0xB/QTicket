@@ -11,7 +11,7 @@ paths:
     post:
       summary: Login with email/username and password
       operationId: login
-      tags: [Auth]
+      tags: [ Auth ]
       requestBody:
         required: true
         content:
@@ -78,7 +78,7 @@ paths:
   /token/refresh:
     post:
       summary: Refresh access token
-      operationId: refreshToken4
+      operationId: refreshToken
       tags: [ Auth ]
       requestBody:
         required: true
@@ -135,11 +135,11 @@ paths:
               schema:
                 $ref: './error.yaml#/components/schemas/ProblemDetail'
 
-  /me:
+  /user/me:
     get:
       summary: Get current user information
       operationId: getCurrentUser
-      tags: [ Auth ]
+      tags: [ User ]
       security:
         - bearerAuth: []
       responses:

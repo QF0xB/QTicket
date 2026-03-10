@@ -25,6 +25,13 @@ fun registerSpringServerGeneration(
     val capName = name.replaceFirstChar { it.uppercase() }
     val taskName = "generate${capName}Server"
 
+    // Skip registration if the spec file does not exist yet
+    val spec = specDir.file(specFile)
+    if (!spec.asFile.exists()) {
+        logger.lifecycle("Skipping OpenAPI generation for '$name': spec not found at ${spec.asFile}")
+        return
+    }
+
     // --- 1) Define generator task in THIS project ---
     tasks.register<GenerateTask>(taskName) {
         group = "openapi"
@@ -49,11 +56,12 @@ fun registerSpringServerGeneration(
             )
         )
 
-        // generate both APIs + models
+        // generate APIs, models, and the ApiUtil supporting file
         globalProperties.set(
             mapOf(
                 "apis" to "",
-                "models" to ""
+                "models" to "",
+                "supportingFiles" to "ApiUtil.java"
             )
         )
     }
