@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: QTicket Auth API
-  description: Authentication, user and Roles
-  version: 0.1.0
+  description: Authentication
+  version: 1.0.0
 servers:
-  - url: /auth
+  - url: /api/v1/auth
 
 paths:
   /login:
@@ -30,7 +30,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
         '403':
           description: 2FA required
           content:
@@ -42,7 +42,7 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
 
   /login/2fa:
     post:
@@ -67,13 +67,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
         default:
           description: Unexpected error
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
 
   /token/refresh:
     post:
@@ -98,19 +98,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
         '403':
           description: Refresh token expired
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
         default:
           description: Unexpected error
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
 
   /logout:
     post:
@@ -127,42 +127,14 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
         default:
           description: Unexpected error
           content:
             application/problem+json:
               schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
+                $ref: '#/components/schemas/ProblemDetail'
 
-  /user/me:
-    get:
-      summary: Get current user information
-      operationId: getCurrentUser
-      tags: [ User ]
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserInfo'
-        '401':
-          description: Not authenticated
-          content:
-            application/problem+json:
-              schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
-        default:
-          description: Unexpected error
-          content:
-            application/problem+json:
-              schema:
-                $ref: './error.yaml#/components/schemas/ProblemDetail'
-
-  
 components:
   securitySchemes:
     bearerAuth:
@@ -170,6 +142,8 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    ProblemDetail:
+      $ref: './error.yaml#/components/schemas/ProblemDetail'
     # Login schema
     LoginRequest:
       type: object
@@ -233,21 +207,6 @@ components:
           type: string
           description: Passkey assertion for two-factor authentication
 
-    # User info schema
-    UserInfo:
-      type: object
-      required: [ id ]
-      properties:
-        id:
-          type: string
-          description: User ID
-        email:
-          type: string
-          description: Email address
-        username:
-          type: string
-          description: Username
-
     # Refresh token schema
     RefreshTokenRequest:
       type: object
@@ -256,3 +215,4 @@ components:
         refreshToken:
           type: string
           description: Refresh token
+          

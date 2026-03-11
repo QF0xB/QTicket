@@ -1,5 +1,10 @@
 server:
   port: 8101
+  ssl:
+    enabled: true
+    bundle: auth-service
+    # Start with "want" to test; switch to "need" once gateway is correctly sending certs
+    client-auth: want
 
 spring:
   application:
@@ -8,16 +13,39 @@ spring:
     url: jdbc:h2:mem:authdb;DB_CLOSE_DELAY=-1;MODE=MySQL
     username: sa
     password:
-    jpa:
-      hibernate:
-        ddl-auto: update
-      database-platform: org.hibernate.dialect.H2Dialect
-    h2:
-      console:
-        enabled: true
-        path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+
+  ssl:
+    bundle:
+      jks:
+        auth-service:
+          keystore:
+            location: file:backend/certs/auth-service/auth-service.p12
+            password: ${AUTH_SERVICE_KEYSTORE_PASSWORD:changeit}
+            type: PKCS12
+          truststore:
+            location: file:backend/certs/mtls-truststore.jks
+            password: ${MTLS_TRUSTSTORE_PASSWORD:changeit}
+            type: JKS
+
 
 eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    secure-port-enabled: true
+    secure-port: ${server.port}
+    non-secure-port-enabled: false
+    status-page-url: https://${eureka.hostname}:${server.port}/actuator/info
+    health-check-url: https://${eureka.hostname}:${server.port}/actuator/health
+    home-page-url: https://${eureka.hostname}:${server.port}
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/

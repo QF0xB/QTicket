@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  ssl:
+    enabled: true
+    # Use the gateway's HTTPS certificate
+    bundle: gateway-server
+
+spring:
+  ssl:
+    bundle:
+      jks:
+        gateway-server:
+          keystore:
+            location: file:backend/certs/gateway/gateway-server.p12
+            password: ${GATEWAY_SERVER_KEYSTORE_PASSWORD:changeit}
+            type: PKCS12
+          truststore:
+            location: file:backend/certs/mtls-truststore.jks
+            password: ${MTLS_TRUSTSTORE_PASSWORD:changeit}
+            type: JKS
+        gateway-client:
+          keystore:
+            location: file:backend/certs/gateway/gateway-client.p12
+            password: ${GATEWAY_CLIENT_KEYSTORE_PASSWORD:changeit}
+            type: PKCS12
+          truststore:
+            location: file:backend/certs/mtls-truststore.jks
+            password: ${MTLS_TRUSTSTORE_PASSWORD:changeit}
+            type: JKS
+  http:
+    clients:
+      ssl:
+        bundle: gateway-client
+
+  cloud:
+    gateway:
+      mvc:
+        http-client:
+          # Use the client cert when calling services via lb("auth-service")
+          ssl-bundle: gateway-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

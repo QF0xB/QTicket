@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -21,8 +23,9 @@ public class SecurityConfig {
                     //.anyRequest().authenticated()
                     .anyRequest().permitAll()
             )
-            .httpBasic(basic -> {})    // or disable if you don’t want it
+            .httpBasic(HttpBasicConfigurer::disable)
             .formLogin(AbstractHttpConfigurer::disable);
+    http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
     return http.build();
   }

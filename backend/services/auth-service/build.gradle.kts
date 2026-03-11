@@ -13,8 +13,11 @@ sourceSets {
 dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.data.jpa)
+    implementation(libs.h2.console)
+
     runtimeOnly(libs.mysql)
     runtimeOnly(libs.h2) // For dev
+
 
     implementation(libs.spring.cloud.eureka.client)
 

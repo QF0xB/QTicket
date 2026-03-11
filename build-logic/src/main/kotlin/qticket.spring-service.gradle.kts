@@ -13,6 +13,8 @@ dependencies {
     implementation(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
     implementation(platform("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"))
 
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 

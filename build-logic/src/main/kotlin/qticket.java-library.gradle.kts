@@ -15,13 +15,22 @@ java {
     withJavadocJar()
 }
 
-spotless {
-    java {
-        googleJavaFormat()
-        target("src/**/*.java")
-    }
-    kotlinGradle {
-        ktlint()
-        target("**/*.gradle.kts")
-    }
+dependencies {
+    val lombok = libs.findLibrary("lombok").get()
+    compileOnly(lombok)
+    annotationProcessor(lombok)
+
+    testCompileOnly(lombok)
+    testAnnotationProcessor(lombok)
 }
+
+//spotless {
+//    java {
+//        googleJavaFormat()
+//        target("src/**/*.java")
+//    }
+//    kotlinGradle {
+//        ktlint()
+//        target("**/*.gradle.kts")
+//    }
+//}

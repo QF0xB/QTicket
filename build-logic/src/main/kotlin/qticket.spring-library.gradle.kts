@@ -1,3 +1,5 @@
+import gradle.kotlin.dsl.accessors._632cb05945fa88b9f5ea9daf5444817c.developmentOnly
+
 plugins {
     id("qticket.java-library")
     id("io.spring.dependency-management")

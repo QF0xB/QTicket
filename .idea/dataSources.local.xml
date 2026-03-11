@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-253.31033.145">
+    <data-source name="jdbc:h2:mem:authdb;DB_CLOSE_DELAY=-1;MODE=MySQL [DEBUG]" uuid="667d0a24-b19f-40a9-b41e-2aa5c08654d6">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
+      <user-name>sa</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

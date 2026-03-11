@@ -16,7 +16,10 @@
   };
 
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [
+    pkgs.git
+    pkgs.openssl
+  ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;

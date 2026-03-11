@@ -20,10 +20,17 @@ fun registerSpringServerGeneration(
     name: String,
     specFile: String,
     targetProjectPath: String,
-    basePackage: String
+    basePackage: String,
+    version: String? = null,
+    generateUtil: Boolean? = true
 ) {
     val capName = name.replaceFirstChar { it.uppercase() }
-    val taskName = "generate${capName}Server"
+    val normalizedVersion = version?.replace('.', '_')
+    val taskName = if (normalizedVersion == null) {
+        "generate${capName}Server"
+    } else {
+        "generate${capName}V${normalizedVersion}Server"
+    }
 
     // Skip registration if the spec file does not exist yet
     val spec = specDir.file(specFile)
@@ -41,27 +48,45 @@ fun registerSpringServerGeneration(
         generatorName.set("spring")
 
         val target = project(targetProjectPath)
-        val outDir = target.layout.buildDirectory.dir("generated/openapi/server-$name").get().asFile.absolutePath
+        val outDir = if (normalizedVersion == null) {
+            target.layout.buildDirectory.dir("generated/openapi/server-$name").get().asFile.absolutePath
+        } else {
+            target.layout.buildDirectory.dir("generated/openapi/server-$name-v$normalizedVersion").get().asFile.absolutePath
+        }
         outputDir.set(outDir)
 
-        apiPackage.set("$basePackage.api")
-        modelPackage.set("$basePackage.api.model")
+        val effectiveBasePackage = if (normalizedVersion == null) {
+            basePackage
+        } else {
+            "$basePackage.v$normalizedVersion"
+        }
+
+        apiPackage.set("$effectiveBasePackage.api")
+        modelPackage.set("$effectiveBasePackage.api.model")
 
         configOptions.set(
             mapOf(
                 "interfaceOnly" to "true",
                 "useSpringBoot3" to "true",
                 "useTags" to "true",
-                "openApiNullable" to "false"
+                "openApiNullable" to "false",
+                "useLombok" to "true",
+                "useJakartaEe" to "true",
+                "useBeanValidation" to "true"
             )
         )
 
+        val supportingFiles = if (generateUtil == true) {
+            "ApiUtil.java"
+        } else {
+            "false"
+        }
         // generate APIs, models, and the ApiUtil supporting file
         globalProperties.set(
             mapOf(
                 "apis" to "",
                 "models" to "",
-                "supportingFiles" to "ApiUtil.java"
+                "supportingFiles" to supportingFiles
             )
         )
     }
@@ -72,7 +97,11 @@ fun registerSpringServerGeneration(
     target.pluginManager.withPlugin("java") {
         // Add generated sources to target main source set
         val sourceSets = target.extensions.getByType<SourceSetContainer>()
-        val genSrc = target.layout.buildDirectory.dir("generated/openapi/server-$name/src/main/java")
+        val genSrc = if (normalizedVersion == null) {
+            target.layout.buildDirectory.dir("generated/openapi/server-$name/src/main/java")
+        } else {
+            target.layout.buildDirectory.dir("generated/openapi/server-$name-v$normalizedVersion/src/main/java")
+        }
 
         sourceSets.named("main") {
             java.srcDir(genSrc)
@@ -88,16 +117,79 @@ fun registerSpringServerGeneration(
     tasks.named("generateAll").configure { dependsOn(taskName) }
 }
 
+fun registerPlatformProblemDetailGeneration(
+    specFile: String,                 // e.g. "v1/error.yaml"
+    targetProjectPath: String,       // e.g. ":backend:platform"
+    modelPackage: String             // e.g. "de.qf0xb.qticket.platform.problem"
+) {
+    tasks.register<GenerateTask>("generatePlatformProblemDetail") {
+        group = "openapi"
+        description = "Generate shared ProblemDetail model into platform"
+
+        inputSpec.set(specDir.file(specFile).asFile.absolutePath)
+        generatorName.set("spring")
+
+        val target = project(targetProjectPath)
+        val outDir = target.layout.buildDirectory
+            .dir("generated/openapi/platform-problem")
+            .get()
+            .asFile
+            .absolutePath
+        outputDir.set(outDir)
+
+        // Only models, no APIs
+        globalProperties.set(
+            mapOf(
+                "useSpringBoot3" to "true",
+                "useTags" to "true",
+                "useLombok" to "true",
+                "models" to "",
+                "apis" to "false",
+                "supportingFiles" to "false"
+            )
+        )
+
+        // Put models into platform package
+        this.modelPackage.set(modelPackage)
+
+        // Optional: Lombok on generated models
+        configOptions.set(
+            mapOf(
+                "useLombok" to "true",
+                "openApiNullable" to "false",
+                "useJakartaEe" to "true",
+                "useBeanValidation" to "true"
+            )
+        )
+    }
+}
+
+registerPlatformProblemDetailGeneration(
+    specFile = "v1/error.yaml",
+    targetProjectPath = ":backend:platform:error-contract",
+    modelPackage = "de.qf0xb.qticket.problem"
+)
+
+
+
 /* -----------------------------
    Register your service specs
    ----------------------------- */
 
-// Example registrations — adapt names/specs/packages to yours:
 registerSpringServerGeneration(
     name = "auth",
-    specFile = "auth.yaml",
+    specFile = "v1/auth.yaml",
     targetProjectPath = ":backend:services:auth-service",
-    basePackage = "de.qf0xb.qticket.auth"
+    basePackage = "de.qf0xb.qticket.auth",
+    version = "1"
+)
+registerSpringServerGeneration(
+    name = "user",
+    specFile = "v1/user.yaml",
+    targetProjectPath = ":backend:services:auth-service",
+    basePackage = "de.qf0xb.qticket.auth",
+    version = "1",
+    generateUtil = false
 )
 
 registerSpringServerGeneration(

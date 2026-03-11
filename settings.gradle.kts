@@ -17,7 +17,6 @@ includeBuild("build-logic")
 // --- contracts + codegen ---
 include(
     ":contracts:openapi",
-    ":codegen:ts-client",
 )
 
 // --- backend platform libs (internal shared libraries, NOT services) ---
@@ -44,7 +43,6 @@ include(
 
 // Map Gradle project paths to directories on disk
 project(":contracts:openapi").projectDir = file("contracts/openapi")
-project(":codegen:ts-client").projectDir = file("codegen/ts-client")
 
 project(":backend:platform:observability").projectDir = file("backend/platform/observability")
 project(":backend:platform:error-contract").projectDir = file("backend/platform/error-contract")

@@ -9,3 +9,6 @@ gradle/wrapper
 build
 **/build
 build-logic/.kotlin
+
+# Dev certs
+backend/certs

@@ -14,6 +14,8 @@ testcontainers = "1.21.3"
 spotless = "8.2.1"
 dependencyAnalysis = "3.5.1"
 
+lombok = "1.18.44"
+
 [libraries]
 # Spring starters
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-webmvc" }
@@ -27,9 +29,11 @@ spring-boot-starter-opentelemetry = { module = "org.springframework.boot:spring-
 spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
 mysql = { module = "com.mysql:mysql-connector-j" }
 h2 = { module = "com.h2database:h2" }
+h2-console = { module = "org.springframework.boot:spring-boot-h2console" }
 
 # Spring Cloud
 spring-cloud-gateway = { module = "org.springframework.cloud:spring-cloud-starter-gateway-server-webmvc" }
+spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-cloud-eureka-server = { module = "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server" }
 spring-cloud-eureka-client = { module = "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client" }
 
@@ -49,6 +53,9 @@ testcontainers-mysql = { module = "org.testcontainers:mysql", version.ref = "tes
 
 # OpenAPI annotations (optional)
 swagger-annotations = { module = "io.swagger.core.v3:swagger-annotations", version = "2.2.30" }
+
+# Development additionals
+lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok" }
 
 [plugins]
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
