@@ -6,5 +6,10 @@
       <user-name>sa</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="jdbc:h2:mem:authdb;DB_CLOSE_DELAY=-1;MODE=MySQL [DEBUG]" uuid="774c3a79-8ce2-47b0-be39-74a16732384a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="H2" />
+      <user-name>sa</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

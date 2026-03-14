@@ -1,4 +1,4 @@
-package de.qf0xb.qticket.auth.model.user;
+package de.qf0xb.qticket.user.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @Entity
 @ToString
 @Table(name = "user_entity")
-public class UserEntity implements UserDetails {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -25,9 +25,6 @@ public class UserEntity implements UserDetails {
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
-
-    @Column(name = "password", nullable = false)
-    private String passwordHash;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
@@ -47,35 +44,5 @@ public class UserEntity implements UserDetails {
     public UserEntity() {
         this.userAuditInfo = new UserEntityAuditInfo();
         this.userStatusInfo = new UserEntityStatusInfo();
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
-
-    @Override
-    public @Nullable String getPassword() {
-        return passwordHash;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return userStatusInfo.getExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !userStatusInfo.getLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return userStatusInfo.getExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return userStatusInfo.getEnabled() && userStatusInfo.getEmailVerified();
     }
 }

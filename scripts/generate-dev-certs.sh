@@ -29,6 +29,7 @@ BASE_DIR="${BASE_DIR:-backend/certs}"
 
 CA_SUBJECT="${CA_SUBJECT:-/CN=QTicket Dev CA}"
 AUTH_SERVICE_CN="${AUTH_SERVICE_CN:-auth-service-dev}"
+USER_SERVICE_CN="${AUTH_SERVICE_CN:-user-service-dev}"
 GATEWAY_CLIENT_CN="${GATEWAY_CLIENT_CN:-gateway-client-dev}"
 GATEWAY_SERVER_CN="${GATEWAY_SERVER_CN:-gateway-server-dev}"
 
@@ -40,17 +41,20 @@ DAYS="${DAYS:-365}"
 
 # SANs for local dev. Adjust as needed.
 AUTH_SERVICE_SAN="${AUTH_SERVICE_SAN:-DNS:localhost,DNS:auth-service-dev,IP:127.0.0.1}"
+USER_SERVICE_SAN="${USER_SERVICE_SAN:-DNS:localhost,DNS:USER-service-dev,IP:127.0.0.1}"
 GATEWAY_CLIENT_SAN="${GATEWAY_CLIENT_SAN:-DNS:localhost,IP:127.0.0.1}"
 GATEWAY_SERVER_SAN="${GATEWAY_SERVER_SAN:-DNS:localhost,IP:127.0.0.1}"
 
 CA_DIR="${BASE_DIR}"
 AUTH_DIR="${BASE_DIR}/auth-service"
+USER_DIR="${BASE_DIR}/user-service"
 GATEWAY_DIR="${BASE_DIR}/gateway"
 
-mkdir -p "${CA_DIR}" "${AUTH_DIR}" "${GATEWAY_DIR}"
+mkdir -p "${CA_DIR}" "${AUTH_DIR}" "${USER_DIR}" "${GATEWAY_DIR}"
 
 echo "CA dir:       ${CA_DIR}"
 echo "Auth dir:     ${AUTH_DIR}"
+echo "Auth dir:     ${USER_DIR}"
 echo "Gateway dir:  ${GATEWAY_DIR}"
 
 # ==== Helper to write OpenSSL config with SAN ================================
@@ -116,6 +120,30 @@ else
   rm -f "${AUTH_CONF}" "${AUTH_DIR}/auth-service.csr"
 fi
 
+# ==== 2.1. User-service server certificate ====================================
+if [[ -f "${USER_DIR}/user-service.key" || -f "${USER_DIR}/user-service.crt" ]]; then
+  echo "User-service cert already exists in ${USER_DIR}, skipping generation."
+else
+  echo "Generating user-service server certificate..."
+  USER_CONF="$(mktemp)"
+  create_openssl_cnf "${USER_SERVICE_CN}" "${USER_SERVICE_SAN}" "${USER_CONF}"
+
+  openssl genrsa -out "${USER_DIR}/user-service.key" 4096
+  openssl req -new \
+    -key "${USER_DIR}/user-service.key" \
+    -out "${USER_DIR}/user-service.csr" \
+    -config "${USER_CONF}"
+
+  openssl x509 -req \
+    -in "${USER_DIR}/user-service.csr" \
+    -CA "${CA_CRT}" -CAkey "${CA_KEY}" -CAcreateserial \
+    -out "${USER_DIR}/user-service.crt" \
+    -days "${DAYS}" -sha256 \
+    -extensions v3_req -extfile "${USER_CONF}"
+
+  rm -f "${USER_CONF}" "${USER_DIR}/user-service.csr"
+fi
+
 # ==== 3. Gateway client certificate (outbound mTLS) ==========================
 if [[ -f "${GATEWAY_DIR}/gateway-client.key" || -f "${GATEWAY_DIR}/gateway-client.crt" ]]; then
   echo "Gateway client cert already exists in ${GATEWAY_DIR}, skipping generation."
@@ -172,6 +200,15 @@ openssl pkcs12 -export \
   -certfile "${CA_CRT}" \
   -name "auth-service" \
   -out "${AUTH_DIR}/auth-service.p12" \
+  -password "pass:${KEYSTORE_PASSWORD}"
+
+echo "Creating PKCS12 keystore for user-service..."
+openssl pkcs12 -export \
+  -inkey "${USER_DIR}/user-service.key" \
+  -in "${USER_DIR}/user-service.crt" \
+  -certfile "${CA_CRT}" \
+  -name "user-service" \
+  -out "${USER_DIR}/user-service.p12" \
   -password "pass:${KEYSTORE_PASSWORD}"
 
 echo "Creating PKCS12 keystore for gateway client..."

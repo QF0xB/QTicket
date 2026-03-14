@@ -36,6 +36,7 @@
             <option value="$PROJECT_DIR$/backend/services/notification-service" />
             <option value="$PROJECT_DIR$/backend/services/search-service" />
             <option value="$PROJECT_DIR$/backend/services/ticket-service" />
+            <option value="$PROJECT_DIR$/backend/services/user-service" />
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/contracts" />
             <option value="$PROJECT_DIR$/contracts/openapi" />

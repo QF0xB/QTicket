@@ -1,4 +1,4 @@
-package de.qf0xb.qticket.auth.model.user;
+package de.qf0xb.qticket.user.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -25,7 +25,7 @@ public class UserEntityStatusInfo {
     private Boolean locked = false;
 
     @Column(name = "locked_at")
-    private LocalDateTime lockedAt;
+    private Instant lockedAt;
 
     @ManyToOne
     @JoinColumn(name = "locked_by_id")
@@ -33,4 +33,7 @@ public class UserEntityStatusInfo {
 
     @Column(name = "expired", nullable = false)
     private Boolean expired = false;
+
+    @Column(name = "expired_at")
+    private Instant expiredAt;
 }

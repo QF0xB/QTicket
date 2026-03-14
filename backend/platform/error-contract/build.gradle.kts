@@ -12,4 +12,5 @@ dependencies {
     api(libs.swagger.annotations)
 
     implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.security)
 }

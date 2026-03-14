@@ -39,6 +39,7 @@ include(
     ":backend:services:notification-service",
     ":backend:services:mail-service",
     ":backend:services:search-service",
+    ":backend:services:user-service",
 )
 
 // Map Gradle project paths to directories on disk
@@ -59,3 +60,4 @@ project(":backend:services:file-service").projectDir = file("backend/services/fi
 project(":backend:services:notification-service").projectDir = file("backend/services/notification-service")
 project(":backend:services:mail-service").projectDir = file("backend/services/mail-service")
 project(":backend:services:search-service").projectDir = file("backend/services/search-service")
+project(":backend:services:user-service").projectDir = file("backend/services/user-service")

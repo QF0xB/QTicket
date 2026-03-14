@@ -1,4 +1,4 @@
-package de.qf0xb.qticket.auth.model.user;
+package de.qf0xb.qticket.user.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -20,12 +20,12 @@ public class UserEntityAuditInfo {
     private UserEntity createdBy;
 
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private Instant createdAt = Instant.now();
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "last_modified_by_id")
     private UserEntity lastModifiedBy;
 
     @Column(name = "last_modified_at", nullable = false)
-    private LocalDateTime lastModifiedAt = LocalDateTime.now();
+    private Instant lastModifiedAt = Instant.now();
 }

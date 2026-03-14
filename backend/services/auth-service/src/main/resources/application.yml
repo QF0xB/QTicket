@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: auth-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: https://auth-service/api/v1/auth/.well-known/jwks.json
 
 eureka:
   client:

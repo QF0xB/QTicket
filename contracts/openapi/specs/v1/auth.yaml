@@ -7,6 +7,29 @@ servers:
   - url: /api/v1/auth
 
 paths:
+  /.well-known/jwks.json:
+    get:
+      summary: Get JWKS for JWT verification
+      operationId: getJwks
+      tags: [ Auth ]
+      responses:
+        '200':
+          description: Successful JWKS retrieval
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Jwk'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
   /login:
     post:
       summary: Login with email/username and password
@@ -117,8 +140,16 @@ paths:
       summary: Logout with refresh token
       operationId: logout
       tags: [Auth]
-      security:
-        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  type: string
+                  description: Refresh token
       responses:
         '204':
           description: Successfully logged out
@@ -144,6 +175,29 @@ components:
   schemas:
     ProblemDetail:
       $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+    Jwk:
+      type: object
+      required: [ kty, kid, n, e ]
+      properties:
+        kty:
+          type: string
+          description: Key type
+        kid:
+          type: string
+          description: Key ID
+        use:
+          type: string
+          description: Key use
+        alg:
+          type: string
+          description: Algorithm
+        n:
+          type: string
+          description: Modulus
+        e:
+          type: string
+          description: Exponent
     # Login schema
     LoginRequest:
       type: object

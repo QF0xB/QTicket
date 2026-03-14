@@ -4,7 +4,7 @@ info:
   description: User management
   version: 1.0.0
 servers:
-  - url: /api/v1/auth
+  - url: /api/v1/users
 
 paths:
   /me:
@@ -21,7 +21,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserInfo'
-  /users/search:
+
+  /authenticate:
+    get:
+      summary: Internal authentication method
+      operationId: authenticate
+      tags: [ User ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationRequest'
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationResponse'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /search:
     get:
       summary: Search users
       operationId: searchUsers
@@ -127,4 +159,33 @@ components:
           type: string
           format: date-time
           description: User expired date
+
+    AuthenticationRequest:
+      type: object
+      required: [ login, password ]
+      properties:
+        login: 
+          type: string
+          description: Login
+        password:
+          type: string
+          description: Password
+          format: password
+
+    AuthenticationResponse:
+      type: object
+      required: [ user, roles, permissions ]
+      properties:
+        user:
+          $ref: '#/components/schemas/UserInfo'
+        roles: 
+          type: array
+          description: User roles
+          items:
+            type: string
+        permissions:
+          type: array
+          description: User permissions
+          items:
+            type: string
       

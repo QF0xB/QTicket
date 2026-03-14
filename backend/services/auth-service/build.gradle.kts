@@ -13,6 +13,7 @@ sourceSets {
 dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.data.jpa)
+    implementation("org.springframework.boot:spring-boot-starter-restclient")
     implementation(libs.h2.console)
 
     runtimeOnly(libs.mysql)

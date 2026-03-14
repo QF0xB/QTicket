@@ -117,6 +117,103 @@ fun registerSpringServerGeneration(
     tasks.named("generateAll").configure { dependsOn(taskName) }
 }
 
+/**
+ * Generate Java client for api models
+ */
+fun registerJavaClientGeneration(
+    name: String,
+    specFile: String,
+    targetProjectPath: String,
+    basePackage: String,
+    version: String? = null
+) {
+    val capName = name.replaceFirstChar { it.uppercase() }
+    val normalizedVersion = version?.replace('.', '_')
+    val taskName = if (normalizedVersion == null) {
+        "generate${capName}Client"
+    } else {
+        "generate${capName}V${normalizedVersion}Client"
+    }
+
+    // Skip if spec is missing
+    val spec = specDir.file(specFile)
+    if (!spec.asFile.exists()) {
+        logger.lifecycle("Skipping OpenAPI client generation for '$name': spec not found at ${spec.asFile}")
+        return
+    }
+
+    // --- 1) Define generator task in THIS project ---
+    tasks.register<GenerateTask>(taskName) {
+        group = "openapi"
+        description = "Generate Java client for $name from $specFile"
+
+        inputSpec.set(spec.asFile.absolutePath)
+        generatorName.set("java") // Java client generator
+
+        val target = project(targetProjectPath)
+        val outDir = if (normalizedVersion == null) {
+            target.layout.buildDirectory.dir("generated/openapi/client-$name").get().asFile.absolutePath
+        } else {
+            target.layout.buildDirectory.dir("generated/openapi/client-$name-v$normalizedVersion").get().asFile.absolutePath
+        }
+        outputDir.set(outDir)
+
+        val effectiveBasePackage = if (normalizedVersion == null) {
+            basePackage
+        } else {
+            "$basePackage.v$normalizedVersion"
+        }
+
+        // Put client under .client.* so it doesn't collide with server stubs
+        apiPackage.set("$effectiveBasePackage.client.api")
+        modelPackage.set("$effectiveBasePackage.client.model")
+        invokerPackage.set("$effectiveBasePackage.client.invoker")
+
+        // WebClient‑style Java client, Jakarta, bean validation, etc.
+        configOptions.set(
+            mapOf(
+                "library" to "resttemplate",   // or "webclient" if you prefer
+                "useSpringBoot3" to "true",
+                "useTags" to "true",
+                "openApiNullable" to "false",
+                "useLombok" to "true",
+                "useJakartaEe" to "true",
+                "useBeanValidation" to "true"
+            )
+        )
+        globalProperties.set(
+            mapOf(
+                "apis" to "",
+                "models" to "",
+                "supportingFiles" to ""   // no extra project scaffolding
+            )
+        )
+    }
+
+    // --- 2) Wire into TARGET project once it has Java plugin ---
+    val target = project(targetProjectPath)
+
+    target.pluginManager.withPlugin("java") {
+        val sourceSets = target.extensions.getByType<SourceSetContainer>()
+        val genSrc = if (normalizedVersion == null) {
+            target.layout.buildDirectory.dir("generated/openapi/client-$name/src/main/java")
+        } else {
+            target.layout.buildDirectory.dir("generated/openapi/client-$name-v$normalizedVersion/src/main/java")
+        }
+
+        sourceSets.named("main") {
+            java.srcDir(genSrc)
+        }
+
+        target.tasks.named("compileJava").configure {
+            dependsOn(":contracts:openapi:$taskName")
+        }
+    }
+
+    // 3) Include in generateAll for convenience
+    tasks.named("generateAll").configure { dependsOn(taskName) }
+}
+
 fun registerPlatformProblemDetailGeneration(
     specFile: String,                 // e.g. "v1/error.yaml"
     targetProjectPath: String,       // e.g. ":backend:platform"
@@ -183,13 +280,20 @@ registerSpringServerGeneration(
     basePackage = "de.qf0xb.qticket.auth",
     version = "1"
 )
+
 registerSpringServerGeneration(
     name = "user",
     specFile = "v1/user.yaml",
-    targetProjectPath = ":backend:services:auth-service",
-    basePackage = "de.qf0xb.qticket.auth",
+    targetProjectPath = ":backend:services:user-service",
+    basePackage = "de.qf0xb.qticket.user",
     version = "1",
-    generateUtil = false
+)
+registerJavaClientGeneration(
+    name = "user",
+    specFile = "v1/user.yaml",
+    targetProjectPath = ":backend:services:auth-service",
+    basePackage = "de.qf0xb.qticket.user",
+    version = "1"
 )
 
 registerSpringServerGeneration(

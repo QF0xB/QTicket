@@ -22,6 +22,14 @@ dependencies {
 
     testCompileOnly(lombok)
     testAnnotationProcessor(lombok)
+
+    // MapStruct (available in all java-library-based modules)
+    val mapstruct = libs.findLibrary("mapstruct").get()
+    val mapstructProcessor = libs.findLibrary("mapstruct-processor").get()
+    implementation(mapstruct)              // mapper API
+    annotationProcessor(mapstructProcessor)
+    testImplementation(mapstruct)
+    testAnnotationProcessor(mapstructProcessor)
 }
 
 //spotless {
