@@ -1,4 +1,4 @@
-package de.qf0xb.qticket.auth.repository;
+package de.qf0xb.qticket.auth.repository.account;
 
 import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import org.jspecify.annotations.NullMarked;
@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @NullMarked
-public interface AuthAccountEntityRepository extends JpaRepository<AuthAccountEntity, UUID> {
+public interface AuthAccountEntityRepository extends JpaRepository<AuthAccountEntity, UUID>, AuthAccountEntityRepositoryExtension {
     Optional<AuthAccountEntity> findByUsernameIgnoreCaseOrEmailIgnoreCase(String username, String email);
 
     List<AuthAccountEntity> findByUserId(UUID userId);

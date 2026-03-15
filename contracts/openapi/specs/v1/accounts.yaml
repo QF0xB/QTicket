@@ -1,7 +1,17 @@
 openapi: 3.1.0
 info:
   title: QTicket AuthAccounts API
-  description: Authentication
+  description: |
+    Authentication and account management.
+
+    **Permissions (auth-service):** In this API, "user" means auth account (login identity).
+    - **Own data** (no extra permission): GET /me, GET /me/accounts, POST /me/accounts — require JWT; act on current user (JWT sub = userId).
+    - **Search:** GET /accounts (search) requires **SEARCH_USER_ALL** (or SEARCH_USER with scoping).
+    - **Create for another:** POST /accounts requires **USER_CREATE** (admin) or internal mTLS (no JWT).
+    - **View another account:** GET /accounts/{id} — allowed if account belongs to current user (userId = JWT sub), else requires **GLOBAL_USER_VIEW**.
+    - **Edit another account:** PATCH /accounts/{id} — own account (limited fields) else **USER_EDIT**.
+    - **Roles:** POST/DELETE /accounts/{id}/roles require **USER_SET_ROLE**.
+    - **Lock/Unlock:** require **USER_LOCK** / **USER_UNLOCK**.
   version: 1.0.0
 servers:
   - url: /api/v1/auth
@@ -52,6 +62,53 @@ paths:
                   $ref: '#/components/schemas/AuthAccount'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+    post:
+      summary: Create an auth account for yourself
+      operationId: createAccountForCurrentUser
+      tags: [Accounts]
+      description: |
+        Creates a new auth account linked to the **current user** (userId = JWT `sub`).
+        Use case: add another login (email/username) to your profile.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountForCurrentUserRequest'
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '400':
+          description: Invalid request (e.g. username or email already in use)
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
           content:
             application/json:
               schema:
@@ -156,18 +213,18 @@ paths:
                 $ref: './error.yaml#/components/schemas/ProblemDetail'
 
     post:
-      summary: Create an auth account for a user (internal API only)
+      summary: Create an auth account for another user
       operationId: createAccount
       tags: [Accounts]
       description: |
-        Creates an auth account linked to a domain user. Typically called by user-service after creating a user.
+        Creates a new auth account for a **different user** (body must include `userId`).
 
-        **Access control:** This operation is **not exposed on the public API gateway**. It is only reachable by internal services (e.g. user-service) that call the auth-service directly. Access is enforced by:
-        - **Routing:** The gateway does not route this operation; only direct calls to the auth-service can reach it.
-        - **mTLS:** Service-to-service calls use mutual TLS; only callers with a valid client certificate can establish a connection.
+        - **Admin (JWT):** Create an account for another user. Requires admin permission.
+        - **Internal service (mTLS, no JWT):** Create an account for the user in `userId`. Used by user-service after creating a domain user. Only the service certificate is accepted on this path when using mTLS.
 
-        No API key or user JWT is required; the mTLS handshake authenticates the caller.
-      security: []
+        For creating an account for yourself, use **POST /me/accounts** instead.
+      security:
+        - BearerAuth: []
       requestBody:
         required: true
         content:
@@ -508,15 +565,33 @@ components:
           type: string
           description: Role description
     
+    CreateAccountForCurrentUserRequest:
+      type: object
+      required: [ email, username, password ]
+      description: Request for POST /me/accounts (create account for current user).
+      properties:
+        email:
+          type: string
+          format: email
+          description: Account email (used for login)
+        username:
+          type: string
+          description: Username (used for login)
+        password:
+          type: string
+          format: password
+          description: Initial password
+          minLength: 1
+
     CreateAccountRequest:
       type: object
       required: [ userId, email, username, password ]
-      description: Request to create an auth account. Used by user-service; userId is the domain user this account belongs to.
+      description: Request for POST /accounts (create account for another user; admin JWT or internal mTLS).
       properties:
         userId:
           type: string
           format: uuid
-          description: Domain user ID (the user this account is for)
+          description: Domain user ID to link the new account to.
         email:
           type: string
           format: email

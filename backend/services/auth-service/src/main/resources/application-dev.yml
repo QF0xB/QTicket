@@ -35,7 +35,6 @@ spring:
             password: ${MTLS_TRUSTSTORE_PASSWORD:changeit}
             type: JKS
 
-
 eureka:
   instance:
     hostname: localhost
@@ -49,5 +48,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+qticket:
+  auth:
+    allowed-service-names-for-account-creation:
+      - "auth-service-dev"
 
 

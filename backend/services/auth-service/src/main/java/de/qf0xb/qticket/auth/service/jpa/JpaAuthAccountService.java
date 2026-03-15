@@ -3,13 +3,15 @@ package de.qf0xb.qticket.auth.service.jpa;
 import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountStatus;
 import de.qf0xb.qticket.auth.model.rbac.RoleEntity;
-import de.qf0xb.qticket.auth.repository.AuthAccountEntityRepository;
+import de.qf0xb.qticket.auth.repository.account.AuthAccountEntityRepository;
 import de.qf0xb.qticket.auth.service.AuthAccountService;
 import de.qf0xb.qticket.auth.service.RoleService;
+import de.qf0xb.qticket.auth.service.SearchRequest;
 import de.qf0xb.qticket.problem.exceptions.auth.AuthAccountNotFoundException;
 import de.qf0xb.qticket.problem.exceptions.auth.EmailUnverifiedException;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NullMarked;
+import org.springframework.data.domain.Page;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
@@ -71,6 +73,11 @@ public class JpaAuthAccountService extends AuthAccountService {
     @Override
     public List<AuthAccountEntity> getAccountsByUserId(UUID userId) {
         return authAccountEntityRepository.findByUserId(userId);
+    }
+
+    @Override
+    public Page<AuthAccountEntity> searchAccounts(SearchRequest request) {
+        return authAccountEntityRepository.search(request);
     }
 
     @Override

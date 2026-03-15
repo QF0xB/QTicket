@@ -5,6 +5,11 @@ spring:
   application:
     name: user-service
 
+# Auth-service: use service ID for load-balanced calls (Eureka)
+qticket:
+  auth-service:
+    base-url: https://auth-service
+
 eureka:
   client:
     service-url:

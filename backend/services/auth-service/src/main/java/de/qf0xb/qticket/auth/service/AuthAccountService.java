@@ -3,6 +3,7 @@ package de.qf0xb.qticket.auth.service;
 import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import de.qf0xb.qticket.auth.model.rbac.RoleEntity;
 import org.jspecify.annotations.NullMarked;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Set;
@@ -16,6 +17,8 @@ public abstract class AuthAccountService {
     public abstract AuthAccountEntity getAccountByLogin(String login);
 
     public abstract List<AuthAccountEntity> getAccountsByUserId(UUID userId);
+
+    public abstract Page<AuthAccountEntity> searchAccounts(SearchRequest request);
 
     public abstract boolean isAccountEnabled(String login);
     public abstract boolean isAccountEmailVerified(String login);

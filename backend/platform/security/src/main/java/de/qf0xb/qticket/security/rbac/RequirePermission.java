@@ -6,5 +6,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RequirePermission {
-    AppPermission value();
+    /**
+     * 
+     */
+    AppPermission[] value();
+
+    boolean needsAll() default true;
 }

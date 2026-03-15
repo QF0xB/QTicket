@@ -35,19 +35,19 @@ public class AuthServiceApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     log.info("Generating roles...");
-    roleService.createRole("USER");
-    RoleEntity userRole = roleService.addPermissionsToRole("USER", AppPermission.ROLE_CREATE);
+    RoleEntity userRole = roleService.createRole("USER");
 
     log.info("Generated role: {}", userRole.toString());
 
     roleService.createRole("MODERATOR");
-    roleService.addPermissionsToRole("MODERATOR", AppPermission.USER_SET_ROLE);
+    roleService.addPermissionsToRole("MODERATOR", AppPermission.USER_SEARCH);
     RoleEntity moderatorRole = roleService.setRoleParent("MODERATOR", userRole.getName());
     log.info("Generated role: {}", moderatorRole.toString());
 
     roleService.createRole("ADMIN");
-    roleService.addPermissionsToRole("ADMIN", AppPermission.USER_CREATE);
-    RoleEntity adminRole = roleService.setRoleParent("ADMIN", moderatorRole.getName());
+
+    roleService.setRoleParent("ADMIN", moderatorRole.getName());
+    RoleEntity adminRole = roleService.addPermissionsToRole("ADMIN", AppPermission.USER_CREATE);
 
     log.info("Generated roles: {}", roleService.getAllRoles());
 
@@ -60,7 +60,7 @@ public class AuthServiceApplication implements CommandLineRunner {
     authAccount= authAccountService.setEmailVerified(authAccount.getUsername(), true);
     log.info("Account: {}", authAccount);
 
-    authAccount = authAccountService.addRoleToUser(authAccount.getUsername(), moderatorRole.getName());
+    authAccount = authAccountService.addRoleToUser(authAccount.getUsername(), adminRole.getName());
     log.info("Account roles: {}", authAccountService.getRolesOfUser(authAccount.getUsername()).toString());
 
 

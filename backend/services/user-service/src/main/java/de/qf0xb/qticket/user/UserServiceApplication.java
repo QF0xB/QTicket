@@ -1,39 +1,30 @@
 package de.qf0xb.qticket.user;
 
-import de.qf0xb.qticket.user.model.UserEntity;
-import de.qf0xb.qticket.user.model.UserEntityAuditInfo;
-import de.qf0xb.qticket.user.model.UserEntityStatusInfo;
-import de.qf0xb.qticket.user.repository.UserEntityRepository;
-import de.qf0xb.qticket.user.v1.api.model.UserStatusInfo;
+import de.qf0xb.qticket.user.service.AuthAccountBridgeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.UUID;
+
+@Slf4j
 @SpringBootApplication(scanBasePackages = "de.qf0xb.qticket")
 public class UserServiceApplication implements CommandLineRunner {
     static void main(String[] args) {
         SpringApplication.run(UserServiceApplication.class, args);
     }
 
-    private PasswordEncoder passwordEncoder;
-    private UserEntityRepository userEntityRepository;
+    private final AuthAccountBridgeService authAccountBridgeService;
 
-    public UserServiceApplication(PasswordEncoder passwordEncoder, UserEntityRepository userEntityRepository) {
-        this.passwordEncoder = passwordEncoder;
-        this.userEntityRepository = userEntityRepository;
+    public UserServiceApplication(AuthAccountBridgeService authAccountBridgeService) {
+        this.authAccountBridgeService = authAccountBridgeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        UserEntity user = new UserEntity();
-        user.setUsername("test");
-        user.setEmail("test@test.com");
-        user.setFirstName("Test");
-        user.setLastName("User");
-        user.setUserStatusInfo(new UserEntityStatusInfo());
-        user.setUserAuditInfo(new UserEntityAuditInfo());
-        user.getUserStatusInfo().setEmailVerified(true);
-        System.out.println(userEntityRepository.save(user));
+        log.info("Creating test account...");
+        UUID userId = authAccountBridgeService.createAccount("test123", "t@t.com", "test", UUID.randomUUID());
+        log.info("Created test account: {}", userId);
     }
 }
