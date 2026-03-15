@@ -19,103 +19,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c3540b5-1105-4484-a2fe-30a1235d9987" name="Changes" comment="feature/bootstrap: initialize project structure with essential modules&#10;&#10;Signed-off-by: Quirin Brändli &lt;qbraendli@pm.me&gt;">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/platform/security/qticket.backend.platform.security.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/services/user-service/qticket.backend.services.user-service.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/edge/discovery-server/src/main/java/de/qf0xb/qticket/discovery/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/ProblemDetailErrorAttributes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/ProblemDetailErrorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/SecurityExceptionHandlers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/AuthAccountNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/ForbiddenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/InvalidRefreshToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/ReusedRefreshToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/RoleNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/UnauthorizedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/jwt/ResourceServerJwtConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/rbac/AppPermission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/rbac/RequirePermission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/rbac/RequirePermissionAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/JwtConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/RestTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/UserClientConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthAccountEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthAccountStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthTwoFaMethodEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/TwaFaChallenge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/TwoFaType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/rbac/RoleEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthAccountEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthTwoFaMethodEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RefreshTokenEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RoleEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthAccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthenticationResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RbacService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TwoFaChallengeInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthAccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRbacService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JwtJpaTokenService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/UserServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/controller/UserControllerV1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/repository/UserEntityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/service/AuthenticationResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/service/jpa/JpaUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/resources/otel.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/db-forest-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/db-forest-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/backend/platform/events/qticket.backend.platform.events.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/EmailUnverifiedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/InvalidRefreshTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/ReusedRefreshTokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/controller/AccountsControllerV1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/contracts/openapi/specs/v1/accounts.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/backend/services/auth-service/qticket.backend.services.auth-service.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/backend/services/auth-service/qticket.backend.services.auth-service.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/edge/discovery-server/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/edge/discovery-server/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/error-contract/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/edge/api-gateway/src/main/java/de/qf0xb/qticket/gateway/configuration/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/edge/api-gateway/src/main/java/de/qf0xb/qticket/gateway/configuration/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/edge/api-gateway/src/main/java/de/qf0xb/qticket/gateway/configuration/RouteConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/edge/api-gateway/src/main/java/de/qf0xb/qticket/gateway/configuration/RouteConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/GlobalErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/GlobalErrorHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/controller/CustomErrorAttributes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/platform/security/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/security/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/AuthAccountNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/AuthAccountNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/InvalidRefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/ReusedRefreshToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/RoleNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/error-contract/src/main/java/de/qf0xb/qticket/problem/exceptions/auth/RoleNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/jwt/ResourceServerJwtConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/jwt/ResourceServerJwtConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/AuthServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/AuthServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/JwtConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/JwtConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/RestTemplateConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/UserClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/config/UserClientConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/controller/AuthControllerV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/controller/AuthControllerV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/jwt/RefreshTokenFamilyEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/RefreshTokenEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/user/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/model/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/user/UserEntityAuditInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/model/UserEntityAuditInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/user/UserEntityStatusInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/model/UserEntityStatusInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/UserEntityRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-logic/src/main/kotlin/qticket.java-library.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build-logic/src/main/kotlin/qticket.java-library.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-logic/src/main/kotlin/qticket.spring-service.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build-logic/src/main/kotlin/qticket.spring-service.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/RefreshTokenEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/RefreshTokenEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthAccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/jpa/AuthAccountEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthAccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/jpa/AuthAccountStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/AuthTwoFaMethodEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/jpa/AuthTwoFaMethodEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/TwaFaChallenge.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/jpa/TwaFaChallenge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/TwoFaType.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/account/TwoFaType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/rbac/RoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/model/rbac/RoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthAccountEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthAccountEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthTwoFaMethodEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/AuthTwoFaMethodEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RefreshTokenEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RefreshTokenEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RoleEntityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/repository/RoleEntityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthenticationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/AuthenticationResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RbacService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RbacService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TwoFaChallengeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/TwoFaChallengeInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthAccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaAuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRbacService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRbacService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JpaRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JwtJpaTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/services/auth-service/src/main/java/de/qf0xb/qticket/auth/service/jpa/JwtJpaTokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/openapi/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/openapi/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/contracts/openapi/specs/v1/auth.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/openapi/specs/v1/auth.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/openapi/specs/v1/user.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/openapi/specs/v1/user.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generate-dev-certs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generate-dev-certs.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devenv.nix" beforeDir="false" afterPath="$PROJECT_DIR$/devenv.nix" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="477" />
+    <option name="cachedIndexableFilesCount" value="492" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -280,8 +247,8 @@
         <option value="com.intellij.jpb.JpaEntity" />
         <option value="Record" />
         <option value="AnnotationType" />
-        <option value="Exception" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -319,91 +286,93 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Gradle.Build QTicket.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:edge:api-gateway:bootRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:edge:api-gateway:build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:api-gateway:assemble].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:api-gateway:build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:api-gateway:jar build clean jar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:api-gateway:jar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:error-contract:build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:platform:security:build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:services:auth-service:bootRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:backend:services:auth-service:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:build-logic:assemble].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:codegen:ts-client:generateTsClient].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [:contracts:openapi:generateAuthServer].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [bootJar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [compileJava].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generateAll].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generateAuthServer].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generateAuthV1Server].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generatePlatformProblemDetail].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generateUserV1Client].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.QTicket [generateUserV1Server].executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project (2).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project (3).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project (4).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project (5).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;NIXITCH_NIXPKGS_CONFIG&quot;: &quot;/etc/nix/nixpkgs-config.nix&quot;,
-    &quot;NIXITCH_NIX_CONF_DIR&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_OTHER_STORES&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_PATH&quot;: &quot;nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels&quot;,
-    &quot;NIXITCH_NIX_PROFILES&quot;: &quot;/run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/q.braendli /home/q.braendli/.local/state/nix/profile /nix/profile /home/q.braendli/.nix-profile&quot;,
-    &quot;NIXITCH_NIX_REMOTE&quot;: &quot;&quot;,
-    &quot;NIXITCH_NIX_USER_PROFILE_DIR&quot;: &quot;/nix/var/nix/profiles/per-user/q.braendli&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-ProfilerNotification&quot;: &quot;Profiler issue&quot;,
-    &quot;Notification.DoNotAsk-ProfilerNotification&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Shell Script..envrc.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ApiGateway.executor&quot;: &quot;Debug&quot;,
-    &quot;Spring Boot.AuthServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/q.braendli/projects/QTicket/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/config&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.Build QTicket.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.QTicket [:backend:edge:api-gateway:bootRun].executor": "Run",
+    "Gradle.QTicket [:backend:edge:api-gateway:build].executor": "Run",
+    "Gradle.QTicket [:backend:platform:api-gateway:assemble].executor": "Run",
+    "Gradle.QTicket [:backend:platform:api-gateway:build].executor": "Run",
+    "Gradle.QTicket [:backend:platform:api-gateway:jar build clean jar].executor": "Run",
+    "Gradle.QTicket [:backend:platform:api-gateway:jar].executor": "Run",
+    "Gradle.QTicket [:backend:platform:error-contract:build].executor": "Run",
+    "Gradle.QTicket [:backend:platform:security:build].executor": "Run",
+    "Gradle.QTicket [:backend:services:auth-service:bootRun].executor": "Run",
+    "Gradle.QTicket [:backend:services:auth-service:clean].executor": "Run",
+    "Gradle.QTicket [:build-logic:assemble].executor": "Run",
+    "Gradle.QTicket [:codegen:ts-client:generateTsClient].executor": "Run",
+    "Gradle.QTicket [:contracts:openapi:generateAuthServer].executor": "Run",
+    "Gradle.QTicket [bootJar].executor": "Run",
+    "Gradle.QTicket [build].executor": "Run",
+    "Gradle.QTicket [clean].executor": "Run",
+    "Gradle.QTicket [compileJava].executor": "Run",
+    "Gradle.QTicket [generateAccountsV1Server].executor": "Run",
+    "Gradle.QTicket [generateAll].executor": "Run",
+    "Gradle.QTicket [generateAuthServer].executor": "Run",
+    "Gradle.QTicket [generateAuthV1Server].executor": "Run",
+    "Gradle.QTicket [generatePlatformProblemDetail].executor": "Run",
+    "Gradle.QTicket [generateUserV1Client].executor": "Run",
+    "Gradle.QTicket [generateUserV1Server].executor": "Run",
+    "JUnit.Whole project (1).executor": "Run",
+    "JUnit.Whole project (2).executor": "Run",
+    "JUnit.Whole project (3).executor": "Run",
+    "JUnit.Whole project (4).executor": "Run",
+    "JUnit.Whole project (5).executor": "Run",
+    "JUnit.Whole project.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "NIXITCH_NIXPKGS_CONFIG": "/etc/nix/nixpkgs-config.nix",
+    "NIXITCH_NIX_CONF_DIR": "",
+    "NIXITCH_NIX_OTHER_STORES": "",
+    "NIXITCH_NIX_PATH": "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels",
+    "NIXITCH_NIX_PROFILES": "/run/current-system/sw /nix/var/nix/profiles/default /etc/profiles/per-user/q.braendli /home/q.braendli/.local/state/nix/profile /nix/profile /home/q.braendli/.nix-profile",
+    "NIXITCH_NIX_REMOTE": "",
+    "NIXITCH_NIX_USER_PROFILE_DIR": "/nix/var/nix/profiles/per-user/q.braendli",
+    "Notification.DisplayName-DoNotAsk-ProfilerNotification": "Profiler issue",
+    "Notification.DoNotAsk-ProfilerNotification": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Shell Script..envrc.executor": "Run",
+    "Spring Boot.ApiGateway.executor": "Run",
+    "Spring Boot.AuthServiceApplication.executor": "Run",
+    "Spring Boot.DiscoveryServerApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Debug",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "dev",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/q.braendli/projects/QTicket/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/config",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "editor.preferences.import",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/config" />
       <recent name="$PROJECT_DIR$/backend/services/user-service/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/platform/security/src/main/java/de/qf0xb/qticket/security/jwt" />
       <recent name="$PROJECT_DIR$/backend/services/user-service/src/main/java/de/qf0xb/qticket/user/service" />
       <recent name="$PROJECT_DIR$/contracts/openapi/specs/v1" />
       <recent name="$PROJECT_DIR$" />
@@ -436,31 +405,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.AuthServiceApplication">
-    <configuration name="QTicket [:backend:platform:security:build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":backend:platform:security:build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
     <configuration name="QTicket [:backend:services:auth-service:bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -498,6 +442,56 @@
         <option name="taskNames">
           <list>
             <option value=":backend:services:auth-service:clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="QTicket [generateAccountsV1Server]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateAccountsV1Server" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="QTicket [generateAll]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="generateAll" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -579,42 +573,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <option name="ACTIVE_PROFILES" value="dev" />
-      <module name="qticket.backend.services.user-service.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="de.qf0xb.qticket.user.UserServiceApplication" />
-      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <extension name="com.fapiko.jetbrains.plugins.better_direnv.runconfigs.IdeaRunConfigurationExtension">
-        <option name="DIRENV_ENABLED" value="true" />
-        <option name="DIRENV_TRUSTED" value="true" />
-      </extension>
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="de.qf0xb.qticket.user.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Gradle.QTicket [generateAll]" />
+      <item itemvalue="Gradle.QTicket [generateAccountsV1Server]" />
       <item itemvalue="Gradle.QTicket [:backend:services:auth-service:bootRun]" />
       <item itemvalue="Gradle.QTicket [:backend:services:auth-service:clean]" />
-      <item itemvalue="Gradle.QTicket [:backend:platform:security:build]" />
       <item itemvalue="Gradle.QTicket [generateAuthV1Server]" />
       <item itemvalue="Spring Boot.ApiGateway" />
       <item itemvalue="Spring Boot.AuthServiceApplication" />
       <item itemvalue="Spring Boot.DiscoveryServerApplication" />
-      <item itemvalue="Spring Boot.UserServiceApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.QTicket [generateAll]" />
+        <item itemvalue="Gradle.QTicket [generateAccountsV1Server]" />
+        <item itemvalue="Gradle.QTicket [generateAuthV1Server]" />
         <item itemvalue="Gradle.QTicket [:backend:services:auth-service:bootRun]" />
         <item itemvalue="Gradle.QTicket [:backend:services:auth-service:clean]" />
-        <item itemvalue="Gradle.QTicket [generateAuthV1Server]" />
-        <item itemvalue="Gradle.QTicket [:backend:platform:security:build]" />
-        <item itemvalue="Spring Boot.UserServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -652,7 +627,9 @@
       <workItem from="1773337866915" duration="409000" />
       <workItem from="1773338492924" duration="18978000" />
       <workItem from="1773434051349" duration="13305000" />
-      <workItem from="1773447389126" duration="1791000" />
+      <workItem from="1773447389126" duration="5268000" />
+      <workItem from="1773514318506" duration="3826000" />
+      <workItem from="1773518557004" duration="15265000" />
     </task>
     <task id="LOCAL-00001" summary="feature/license: add Apache 2.0 license and initial project setup">
       <option name="closed" value="true" />

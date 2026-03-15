@@ -1,6 +1,7 @@
 package de.qf0xb.qticket.auth.repository;
 
 import de.qf0xb.qticket.auth.model.RefreshTokenEntity;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@NullMarked
 public interface RefreshTokenEntityRepository extends JpaRepository<RefreshTokenEntity, UUID> {
     boolean existsByCurrentTokenHash(String currentTokenHash);
 

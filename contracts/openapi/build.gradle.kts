@@ -282,6 +282,15 @@ registerSpringServerGeneration(
 )
 
 registerSpringServerGeneration(
+    name = "accounts",
+    specFile = "v1/accounts.yaml",
+    targetProjectPath = ":backend:services:auth-service",
+    basePackage = "de.qf0xb.qticket.auth",
+    version = "1",
+    generateUtil = false
+)
+
+registerSpringServerGeneration(
     name = "user",
     specFile = "v1/user.yaml",
     targetProjectPath = ":backend:services:user-service",

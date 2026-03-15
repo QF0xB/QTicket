@@ -1,21 +1,20 @@
 package de.qf0xb.qticket.auth;
 
-import de.qf0xb.qticket.auth.model.account.AuthAccountEntity;
+import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import de.qf0xb.qticket.auth.model.rbac.RoleEntity;
-import de.qf0xb.qticket.auth.repository.RoleEntityRepository;
 import de.qf0xb.qticket.auth.service.AuthAccountService;
-import de.qf0xb.qticket.auth.service.AuthService;
 import de.qf0xb.qticket.auth.service.RbacService;
 import de.qf0xb.qticket.auth.service.RoleService;
 import de.qf0xb.qticket.security.rbac.AppPermission;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Set;
 import java.util.UUID;
 
+@NullMarked
 @Slf4j
 @SpringBootApplication(scanBasePackages = "de.qf0xb.qticket")
 public class AuthServiceApplication implements CommandLineRunner {
@@ -36,40 +35,38 @@ public class AuthServiceApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
     log.info("Generating roles...");
-    RoleEntity userRole = roleService.createRole("USER");
-    userRole = roleService.addPermissionToRole("USER", AppPermission.ROLE_CREATE);
+    roleService.createRole("USER");
+    RoleEntity userRole = roleService.addPermissionsToRole("USER", AppPermission.ROLE_CREATE);
 
-    log.info("Generated role: " + userRole.toString());
+    log.info("Generated role: {}", userRole.toString());
 
-    RoleEntity moderatorRole = new RoleEntity();
-    moderatorRole.setName("MODERATOR");
-    moderatorRole.setDescription("Moderator role");
-    moderatorRole.setAppPermission(Set.of(AppPermission.ROLE_DELETE));
-    moderatorRole.setParent(userRole);
-    moderatorRole = roleService.createRole(moderatorRole);
+    roleService.createRole("MODERATOR");
+    roleService.addPermissionsToRole("MODERATOR", AppPermission.USER_SET_ROLE);
+    RoleEntity moderatorRole = roleService.setRoleParent("MODERATOR", userRole.getName());
+    log.info("Generated role: {}", moderatorRole.toString());
 
-    RoleEntity adminRole = new RoleEntity();
-    adminRole.setName("ADMIN");
-    adminRole.setDescription("ADMIN role");
-    adminRole.setAppPermission(Set.of(AppPermission.USER_SET_ROLE));
-    adminRole.setParent(moderatorRole);
-    adminRole = roleService.createRole(adminRole);
+    roleService.createRole("ADMIN");
+    roleService.addPermissionsToRole("ADMIN", AppPermission.USER_CREATE);
+    RoleEntity adminRole = roleService.setRoleParent("ADMIN", moderatorRole.getName());
 
-    log.info("Generated roles: {}", roleService.getAllRoles().toString());
+    log.info("Generated roles: {}", roleService.getAllRoles());
 
-    log.info("User-perms: {}", roleService.getPermissionsOfRole("USER").toString());
-    log.info("Mod-perms: {}", roleService.getPermissionsOfRole("MODERATOR").toString());
-    log.info("Admin-perms: {}", roleService.getPermissionsOfRole(adminRole).toString());
+    log.info("User-perms: {}", roleService.getPermissionsOfRole("USER"));
+    log.info("Mod-perms: {}", roleService.getPermissionsOfRole("MODERATOR"));
+    log.info("Admin-perms: {}", roleService.getPermissionsOfRole(adminRole.getName()));
 
 
     AuthAccountEntity authAccount = authAccountService.createAccount("test@test.com", "test", "test", UUID.randomUUID());
     authAccount= authAccountService.setEmailVerified(authAccount.getUsername(), true);
-    log.info("Account: {}", authAccount.toString());
+    log.info("Account: {}", authAccount);
 
-    authAccount = authAccountService.addRoleToUser(authAccount, moderatorRole);
-    log.info("Account roles: {}", authAccountService.getRolesOfUser(authAccount).toString());
+    authAccount = authAccountService.addRoleToUser(authAccount.getUsername(), moderatorRole.getName());
+    log.info("Account roles: {}", authAccountService.getRolesOfUser(authAccount.getUsername()).toString());
 
 
-    log.info("Account permissions: {}", rbacService.getPermissionsOfUser(authAccount));
+    log.info("Account permissions: {}", rbacService.getPermissionsOfUser(authAccount.getUsername()).toString());
+
+    AuthAccountEntity authAccount2 = authAccountService.createAccount("test2@test.com", "test2", "test2", authAccount.getUserId());
+    authAccountService.setEmailVerified(authAccount2.getUsername(), true);
   }
 }

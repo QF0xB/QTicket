@@ -1,14 +1,19 @@
-package de.qf0xb.qticket.auth.model.account;
+package de.qf0xb.qticket.auth.model.account.jpa;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.UUID;
 
+@NullMarked
 @Getter
 @Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name = "twa_fa_challenge")
 public class TwaFaChallenge {
     @Id

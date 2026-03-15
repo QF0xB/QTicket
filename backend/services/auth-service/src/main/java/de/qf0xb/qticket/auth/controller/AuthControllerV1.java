@@ -6,17 +6,14 @@ import de.qf0xb.qticket.auth.service.AuthenticationResult;
 import de.qf0xb.qticket.auth.service.TokenService;
 import de.qf0xb.qticket.auth.v1.api.AuthApi;
 import de.qf0xb.qticket.auth.v1.api.model.*;
-import de.qf0xb.qticket.security.rbac.AppPermission;
-import de.qf0xb.qticket.security.rbac.RequirePermission;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+@NullMarked
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthControllerV1 implements AuthApi {
@@ -81,13 +78,5 @@ public class AuthControllerV1 implements AuthApi {
   public ResponseEntity<Void> logout(LogoutRequest logoutRequest) {
     tokenService.revokeRefreshToken(logoutRequest.getRefreshToken());
     return ResponseEntity.noContent().build();
-  }
-
-  @Override
-  public ResponseEntity<Test200Response> test() {
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-      assert auth != null;
-      System.out.println(auth.getAuthorities());
-    return ResponseEntity.ok(new Test200Response());
   }
 }

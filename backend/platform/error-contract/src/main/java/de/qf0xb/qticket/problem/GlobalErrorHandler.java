@@ -2,14 +2,17 @@ package de.qf0xb.qticket.problem;
 
 import de.qf0xb.qticket.problem.exceptions.auth.*;
 import jakarta.servlet.http.HttpServletRequest;
-import java.net.URI;
-import org.springframework.http.*;
+import org.springframework.http.MediaType;
+import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.net.URI;
 
 @RestControllerAdvice
 public class GlobalErrorHandler {
@@ -78,8 +81,8 @@ public class GlobalErrorHandler {
         .body(body);
   }
 
-  @ExceptionHandler(InvalidRefreshToken.class)
-  public ResponseEntity<ProblemDetail> handleInvalidRefreshToken(InvalidRefreshToken ex, HttpServletRequest request) {
+  @ExceptionHandler(InvalidRefreshTokenException.class)
+  public ResponseEntity<ProblemDetail> handleInvalidRefreshToken(InvalidRefreshTokenException ex, HttpServletRequest request) {
     ProblemDetail body = ProblemDetail.forStatus(401);
     body.setTitle("Invalid refresh token");
     body.setDetail(ex.getMessage());
@@ -89,8 +92,8 @@ public class GlobalErrorHandler {
         .body(body);
   }
 
-  @ExceptionHandler(ReusedRefreshToken.class)
-  public ResponseEntity<ProblemDetail> handleReusedRefreshToken(ReusedRefreshToken ex, HttpServletRequest request) {
+  @ExceptionHandler(ReusedRefreshTokenException.class)
+  public ResponseEntity<ProblemDetail> handleReusedRefreshToken(ReusedRefreshTokenException ex, HttpServletRequest request) {
     ProblemDetail body = ProblemDetail.forStatus(401);
     body.setTitle("Invalid refresh token");
     body.setDetail("Invalid refresh token");

@@ -19,6 +19,7 @@
   packages = [
     pkgs.git
     pkgs.openssl
+    pkgs.postman
   ];
 
   # https://devenv.sh/languages/

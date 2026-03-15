@@ -1,11 +1,11 @@
-package de.qf0xb.qticket.auth.model.account;
+package de.qf0xb.qticket.auth.model.account.jpa;
 
+import de.qf0xb.qticket.auth.model.account.TwoFaType;
 import de.qf0xb.qticket.auth.model.rbac.RoleEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@NullMarked
 @Getter
 @Setter
 @Entity
@@ -20,13 +21,16 @@ import java.util.stream.Collectors;
 @Table(
         name = "auth_account_entity"
 )
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthAccountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "user_id", nullable = false, updatable = false)
+    @Column(name = "user_id", nullable = false)
     private UUID userId;
 
     // Login identifiers
@@ -41,19 +45,22 @@ public class AuthAccountEntity {
     private String passwordHash;
 
     @OneToMany(mappedBy = "authAccount", orphanRemoval = true)
+    @Builder.Default
     private Set<AuthTwoFaMethodEntity> authTwoFaMethodEntities = new LinkedHashSet<>();
 
     @ManyToMany
     @JoinTable(name = "auth_account_roles",
             joinColumns = @JoinColumn(name = "auth_account_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @Builder.Default
     private Set<RoleEntity> roleEntities = new LinkedHashSet<>();
 
     @Embedded
-    private AuthAccountStatus authAccountStatus;
+    @Builder.Default
+    private AuthAccountStatus authAccountStatus = new AuthAccountStatus();
 
     public boolean isTwoFaRequired() {
-        return authTwoFaMethodEntities != null && !authTwoFaMethodEntities.isEmpty();
+        return !authTwoFaMethodEntities.isEmpty();
     }
 
     public Set<TwoFaType> getTwoFaTypes() {

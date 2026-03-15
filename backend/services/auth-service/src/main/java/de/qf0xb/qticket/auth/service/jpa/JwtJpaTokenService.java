@@ -1,16 +1,16 @@
 package de.qf0xb.qticket.auth.service.jpa;
 
 import de.qf0xb.qticket.auth.model.RefreshTokenEntity;
-import de.qf0xb.qticket.auth.model.account.AuthAccountEntity;
+import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import de.qf0xb.qticket.auth.repository.RefreshTokenEntityRepository;
 import de.qf0xb.qticket.auth.service.AuthAccountService;
 import de.qf0xb.qticket.auth.service.RbacService;
 import de.qf0xb.qticket.auth.service.TokenService;
-import de.qf0xb.qticket.problem.exceptions.auth.InvalidRefreshToken;
-import de.qf0xb.qticket.problem.exceptions.auth.ReusedRefreshToken;
+import de.qf0xb.qticket.problem.exceptions.auth.InvalidRefreshTokenException;
+import de.qf0xb.qticket.problem.exceptions.auth.ReusedRefreshTokenException;
 import de.qf0xb.qticket.security.rbac.AppPermission;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.DisabledException;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
@@ -26,6 +26,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@NullMarked
 public class JwtJpaTokenService extends TokenService {
     private final RefreshTokenEntityRepository refreshTokenEntityRepository;
     private final JwtEncoder jwtEncoder;
@@ -41,105 +42,93 @@ public class JwtJpaTokenService extends TokenService {
         this.rbacService = rbacService;
     }
 
+    private RefreshTokenEntity getRefreshTokenEntity(String refreshToken) {
+        return refreshTokenEntityRepository.findByCurrentTokenHash(refreshToken).orElseThrow(() ->
+                new InvalidRefreshTokenException("Invalid refresh token")
+        );
+    }
+
     @Override
     @Transactional
     public TokenPair issueTokenPair(AuthAccountEntity account) {
         String refreshTokenValue = generateRefreshTokenValue();
-        RoleAndPermsInfo rolesAndPerms = getRolesAndPerms(account);
 
+        // Generate a random, unique family id
         UUID familyId = UUID.randomUUID();
         while (refreshTokenEntityRepository.existsByFamilyId(familyId)) {
             familyId = UUID.randomUUID();
         }
 
-        return generateTokenPair(account, rolesAndPerms.roles(), rolesAndPerms.permissions(), familyId, refreshTokenValue, Instant.now());
+        return buildAndPersistTokenPair(account, familyId, refreshTokenValue, Instant.now());
     }
 
-
-
     @Override
-    @Transactional(noRollbackFor = {ReusedRefreshToken.class} )
+    @Transactional(noRollbackFor = {ReusedRefreshTokenException.class} )
     public TokenPair refreshTokenPair(String refreshToken) {
         Instant invokeTime = Instant.now();
 
-        RefreshTokenEntity entity = refreshTokenEntityRepository.findByCurrentTokenHash(refreshToken).orElseThrow(() ->
-                new InvalidRefreshToken("Invalid refresh token")
-        );
+        RefreshTokenEntity entity = getRefreshTokenEntity(refreshToken);
+        validateRefreshToken(entity, invokeTime);
 
-        if (entity.getFamilyId() == null) {
-            throw new InvalidRefreshToken("Refresh token has no family id");
-        }
+        AuthAccountEntity account = authAccountService.getAccountByAccountId(entity.getAccountId());
+        authAccountService.isAccountEnabled(account.getUsername());
 
+        String newRefreshToken = rotateRefreshToken(entity, invokeTime);
+        return buildAndPersistTokenPair(account, entity.getFamilyId(), newRefreshToken, invokeTime);
+    }
+
+    private void validateRefreshToken(RefreshTokenEntity entity, Instant invokeTime) {
         if (entity.isRevoked()) {
-            log.info("Refresh token has already been revoked, reuse detected: {}", refreshToken);
+            log.debug("Refresh token {} has already been revoked, reuse detected.", entity.getCurrentTokenHash());
             refreshTokenEntityRepository.revokeFamily(entity.getFamilyId(), invokeTime, "reuse");
-            throw new ReusedRefreshToken("Refresh token has been revoked");
+            throw new ReusedRefreshTokenException("Refresh token has been revoked");
         }
 
         if(entity.getExpiresAt().isBefore(invokeTime)) {
-            throw new InvalidRefreshToken("Refresh token has expired");
+            throw new InvalidRefreshTokenException("Refresh token has expired");
         }
+    }
 
-        if (entity.getUserId() == null) {
-            throw new InvalidRefreshToken("Refresh token has no user id");
-        }
-
-        AuthAccountEntity account = authAccountService.getAccountById(entity.getUserId());
-
-        if(!authAccountService.isAccountEnabled(account)) {
-            throw new DisabledException("Account is disabled");
-        }
-
-        RoleAndPermsInfo rolesAndPerms = getRolesAndPerms(account);
-
-        String newRefreshToken = generateRefreshTokenValue();
+    private String rotateRefreshToken(RefreshTokenEntity entity, Instant invokeTime) {
         entity.setRevoked(true);
         entity.setRevokedAt(invokeTime);
         entity.setRevokedReason("rotated");
         refreshTokenEntityRepository.save(entity);
 
-        return generateTokenPair(account, rolesAndPerms.roles(), rolesAndPerms.permissions(), entity.getFamilyId(), newRefreshToken, invokeTime);
+        return generateRefreshTokenValue();
     }
 
-    @Override
-    public void revokeRefreshToken(String refreshToken) {
-        Instant invokeTime = Instant.now();
-
-        RefreshTokenEntity entity = refreshTokenEntityRepository.findByCurrentTokenHash(refreshToken).orElseThrow(() ->
-                new InvalidRefreshToken("Invalid refresh token")
-        );
-
-        entity.setRevoked(true);
-        entity.setRevokedAt(invokeTime);
-        entity.setRevokedReason("logout");
-        refreshTokenEntityRepository.save(entity);
-    }
-
-    private TokenPair generateTokenPair(AuthAccountEntity account, List<String> roles, Set<AppPermission> permissions, UUID familyId, String refreshTokenValue, Instant invokeTime) {
+    private TokenPair buildAndPersistTokenPair(AuthAccountEntity account, UUID familyId, String refreshTokenValue, Instant invokeTime) {
         Instant accessTokenExpiry = invokeTime.plusSeconds(TokenService.ACCESS_TOKEN_VALIDITY_SECONDS);
+        RoleAndPermsInfo rolesAndPerms = getRolesAndPerms(account.getUsername());
 
-        JwtClaimsSet claims = JwtClaimsSet.builder()
-                .subject(account.getId().toString())
-                .issuedAt(invokeTime)
-                .expiresAt(accessTokenExpiry)
+        JwtClaimsSet claims = getClaims(account, rolesAndPerms.roles(), rolesAndPerms.permissions(), invokeTime, accessTokenExpiry);
+
+        String accessToken = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+
+        RefreshTokenEntity refreshTokenEntity = buildRefreshTokenEntity(account, refreshTokenValue, familyId, invokeTime);
+        refreshTokenEntityRepository.save(refreshTokenEntity);
+
+        return new TokenPair(accessToken, refreshTokenValue, REFRESH_TOKEN_VALIDITY_SECONDS);
+    }
+
+    private JwtClaimsSet getClaims(AuthAccountEntity account, List<String> roles, Set<AppPermission> permissions, Instant issuedAt, Instant expiresAt) {
+        return JwtClaimsSet.builder()
+                .subject(account.getUserId().toString())
+                .claim("account_id", account.getId().toString())
+                .issuedAt(issuedAt)
+                .expiresAt(expiresAt)
                 .claim("roles", roles)
                 .claim("permissions", permissions.stream().map(AppPermission::name).toList())
                 .issuer("auth-service")
                 .audience(List.of("qticket"))
-                .notBefore(invokeTime)
+                .notBefore(issuedAt)
                 .build();
-
-        String accessToken = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
-
-        RefreshTokenEntity refreshTokenEntity = buildRefreshTokenEntity(account, refreshTokenValue, familyId, invokeTime.plusSeconds(REFRESH_TOKEN_VALIDITY_SECONDS));
-
-        refreshTokenEntityRepository.save(refreshTokenEntity);
-        return new TokenPair(accessToken, refreshTokenValue, REFRESH_TOKEN_VALIDITY_SECONDS);
     }
 
-    private RoleAndPermsInfo getRolesAndPerms(AuthAccountEntity account) {
-        List<String> roles = rbacService.getRoleNamesOfUser(account);
-        Set<AppPermission> permissions = rbacService.getPermissionsOfUser(account);
+    private RoleAndPermsInfo getRolesAndPerms(String login) {
+        List<String> roles = rbacService.getRoleNamesOfUser(login);
+        Set<AppPermission> permissions = rbacService.getPermissionsOfUser(login);
 
         return new RoleAndPermsInfo(roles, permissions);
     }
@@ -157,11 +146,23 @@ public class JwtJpaTokenService extends TokenService {
 
     private RefreshTokenEntity buildRefreshTokenEntity(AuthAccountEntity account, String refreshToken, UUID familyId, Instant invokeTime) {
         return RefreshTokenEntity.builder()
-                .userId(account.getId())
+                .accountId(account.getId())
                 .createdAt(invokeTime)
                 .currentTokenHash(refreshToken)
                 .familyId(familyId)
                 .expiresAt(invokeTime.plusSeconds(REFRESH_TOKEN_VALIDITY_SECONDS))
                 .build();
+    }
+
+    @Override
+    @Transactional
+    public void revokeRefreshToken(String refreshToken) {
+        Instant invokeTime = Instant.now();
+
+        RefreshTokenEntity entity = getRefreshTokenEntity(refreshToken);
+        entity.setRevoked(true);
+        entity.setRevokedAt(invokeTime);
+        entity.setRevokedReason("logout");
+        refreshTokenEntityRepository.save(entity);
     }
 }

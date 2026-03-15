@@ -1,16 +1,16 @@
 package de.qf0xb.qticket.auth.service;
 
 import lombok.Getter;
-import lombok.Setter;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
-import java.util.UUID;
-
+@NullMarked
 @Getter
 public class AuthenticationResult {
-    private String accessToken;
-    private String refreshToken;
-    private Long ttl;
-    private TwoFaChallengeInfo twoFaChallengeInfo;
+    private @Nullable String accessToken;
+    private @Nullable String refreshToken;
+    private @Nullable Long ttl;
+    private @Nullable TwoFaChallengeInfo twoFaChallengeInfo;
 
     public AuthenticationResult(TwoFaChallengeInfo twoFaChallengeInfo) {
         this.twoFaChallengeInfo = twoFaChallengeInfo;

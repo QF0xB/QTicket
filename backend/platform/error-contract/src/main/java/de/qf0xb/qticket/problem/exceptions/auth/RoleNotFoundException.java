@@ -1,7 +1,10 @@
 package de.qf0xb.qticket.problem.exceptions.auth;
 
-public class RoleNotFoundException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+public class RoleNotFoundException extends ResponseStatusException {
     public RoleNotFoundException(String message) {
-        super(message);
+        super(HttpStatus.NOT_FOUND, message);
     }
 }

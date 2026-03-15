@@ -2,10 +2,13 @@ package de.qf0xb.qticket.auth.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@NullMarked
 @Getter
 @Setter
 @Entity
@@ -20,13 +23,13 @@ public class RefreshTokenEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "user_id", nullable = false)
-    private UUID userId;
+    @Column(name = "account_id", nullable = false)
+    private UUID accountId;
 
-    @Column(name = "family_id")
+    @Column(name = "family_id", nullable = false)
     private UUID familyId;
 
-    @Column(name = "current_token_hash", unique = true, length  = 256, nullable = false)
+    @Column(name = "current_token_hash", unique = true, length = 256, nullable = false)
     private String currentTokenHash;
 
     @Column(name = "created_at", nullable = false)
@@ -39,9 +42,9 @@ public class RefreshTokenEntity {
     private boolean revoked = false;
 
     @Column(name = "revoked_at")
-    private Instant revokedAt;
+    private @Nullable Instant revokedAt;
 
     @Column(name = "revoked_reason")
-    private String revokedReason;
+    private @Nullable String revokedReason;
 
 }

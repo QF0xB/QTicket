@@ -1,22 +1,21 @@
 package de.qf0xb.qticket.auth.service.jpa;
 
-import de.qf0xb.qticket.auth.model.account.AuthAccountEntity;
+import de.qf0xb.qticket.auth.model.account.jpa.AuthAccountEntity;
 import de.qf0xb.qticket.auth.service.*;
-import de.qf0xb.qticket.security.rbac.AppPermission;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Service
+@NullMarked
 public class JpaAuthService extends AuthService {
     private final AuthAccountService authAccountService;
-    private final RbacService rbacService;
     private final TokenService tokenService;
 
-    public JpaAuthService(AuthAccountService authAccountService, RbacService rbacService, TokenService tokenService) {
+    public JpaAuthService(AuthAccountService authAccountService, TokenService tokenService) {
         this.authAccountService = authAccountService;
-        this.rbacService = rbacService;
         this.tokenService = tokenService;
     }
 
@@ -25,7 +24,7 @@ public class JpaAuthService extends AuthService {
         AuthAccountEntity account = authAccountService.authenticate(login, password);
 
         if (account.isTwoFaRequired()) {
-            return new AuthenticationResult(new TwoFaChallengeInfo(null, Set.of()));
+            return new AuthenticationResult(new TwoFaChallengeInfo(UUID.randomUUID(), Set.of())); // TODO: implement 2fa
         } else {
             return getTokens(account);
         }

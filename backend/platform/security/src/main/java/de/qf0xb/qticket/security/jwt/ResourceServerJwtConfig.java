@@ -23,6 +23,7 @@ public class ResourceServerJwtConfig {
 
         JwtAuthenticationConverter jwtConverter = new JwtAuthenticationConverter();
         jwtConverter.setJwtGrantedAuthoritiesConverter(converter);
+        jwtConverter.setPrincipalClaimName("sub");
 
         return jwtConverter;
     }

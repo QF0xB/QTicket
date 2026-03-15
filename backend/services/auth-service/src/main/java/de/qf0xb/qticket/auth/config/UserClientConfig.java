@@ -2,13 +2,14 @@ package de.qf0xb.qticket.auth.config;
 
 import de.qf0xb.qticket.user.v1.client.api.UserApi;
 import de.qf0xb.qticket.user.v1.client.invoker.ApiClient;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.restclient.RestTemplateBuilder;
 import org.springframework.boot.ssl.SslBundles;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.web.client.RestTemplate;
 
+@NullMarked
 @Configuration
 public class UserClientConfig {
     @Bean

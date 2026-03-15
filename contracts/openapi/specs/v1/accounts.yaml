@@ -1,0 +1,551 @@
+openapi: 3.1.0
+info:
+  title: QTicket AuthAccounts API
+  description: Authentication
+  version: 1.0.0
+servers:
+  - url: /api/v1/auth
+
+paths:
+  /me:
+    get:
+      summary: Get the current account
+      operationId: getCurrentAccount
+      tags: [Accounts]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+  
+  /me/accounts:
+    get:
+      summary: Get the all accounts of the current user
+      operationId: getAllAccountsOfCurrentUser
+      tags: [Accounts]
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthAccount'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /accounts:
+    get:
+      summary: search for accounts
+      operationId: searchAccounts
+      tags: [Accounts]
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: q
+          in: query
+          description: Free-text search (username, email, etc)
+          schema:
+            type: string
+        - name: username
+          in: query
+          description: Filter by exact username
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: Filter by exact email
+          schema:
+            type: string
+            format: email
+        - name: enabled
+          in: query
+          description: Filter by enabled status
+          schema:
+            type: boolean
+        - name: emailVerified
+          in: query
+          description: Filter by email verified status
+          schema:
+            type: boolean
+        - name: locked
+          in: query
+          description: Filter by locked status
+          schema:
+            type: boolean
+        - name: userId
+          in: query
+          description: Filter by linked user id
+          schema:
+            type: string
+            format: uuid
+        - name: sort
+          in: query
+          description: Sorting criteria
+          schema:
+            type: string
+            default: "username,asc"
+        - name: page
+          in: query
+          description: Page number (0-based)
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: size
+          in: query
+          description: Page size
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+            default: 20
+      responses:
+        '200':
+          description: List of accounts (possibly empty)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccountPage'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+    post:
+      summary: Create an auth account for a user (internal API only)
+      operationId: createAccount
+      tags: [Accounts]
+      description: |
+        Creates an auth account linked to a domain user. Typically called by user-service after creating a user.
+
+        **Access control:** This operation is **not exposed on the public API gateway**. It is only reachable by internal services (e.g. user-service) that call the auth-service directly. Access is enforced by:
+        - **Routing:** The gateway does not route this operation; only direct calls to the auth-service can reach it.
+        - **mTLS:** Service-to-service calls use mutual TLS; only callers with a valid client certificate can establish a connection.
+
+        No API key or user JWT is required; the mTLS handshake authenticates the caller.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '400':
+          description: Invalid request (e.g. username or email already in use)
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '401':
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+  /accounts/{accountId}:
+    get:
+      summary: Get account by id
+      operationId: getAccountById
+      tags: [ Accounts ]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: Account ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Account found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '404':
+          description: Account not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+  
+  /accounts/{accountId}/roles:
+    get:
+      summary: List roles of an account
+      operationId: getAccountRoles
+      tags: [ Accounts ]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: Account ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleInfo'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '404':
+          description: Account not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+
+    post:
+      summary: Add role to account
+      operationId: addRoleToAccount
+      tags: [ Accounts ]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: Account ID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleChangeToAccountRequest'
+      responses:
+        '200':
+          description: Account with updated roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '404':
+          description: Account or role not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+    delete:
+      summary: Remove role from account
+      operationId: removeRoleFromAccount
+      tags: [ Accounts ]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: Account ID
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleChangeToAccountRequest'
+      responses:
+        '200':
+          description: Account with updated roles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthAccount'
+        '401':
+          description: Not authenticated
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '403':
+          description: Forbidden
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        '404':
+          description: Account or role not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+        default:
+          description: Unexpected error
+          content:
+            application/problem+json:
+              schema:
+                $ref: './error.yaml#/components/schemas/ProblemDetail'
+  
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: End-user JWT (for /me, get account, etc.)
+
+  schemas:
+    AuthAccount:
+      type: object
+      required: [ id, userId, username, email ]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Auth account UUID
+        userId:
+          type: string
+          format: uuid
+          description: Linked user (profile) UUID
+        username:
+          type: string
+          description: Username
+        email:
+          type: string
+          format: email
+          description: Email address
+        status:
+          $ref: '#/components/schemas/AuthAccountStatusInfo'
+        roles:
+          type: array
+          description: Role names assigned to the account
+          items:
+            type: string
+        permissions:
+          type: array
+          description: Effective permissions (from roles and hierarchy) for this account
+          items:
+            type: string
+
+    AuthAccountStatusInfo:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Account enabled status
+        emailVerified:
+          type: boolean
+          description: Account email verified status
+        locked:
+          type: boolean
+          description: Account locked status
+        lockedAt:
+          type: string
+          format: date-time
+          description: Account locked date
+
+    AuthAccountPage:
+      type: object
+      description: Paginated list of auth accounts
+      required: [ content, page, size, totalElements, totalPages ]
+      properties:
+        content:
+          type: array
+          description: List of accounts
+          items:
+            $ref: '#/components/schemas/AuthAccount'
+        totalElements:
+          type: integer
+          format: int64
+          description: Total number of elements
+        totalPages:
+          type: integer
+          format: int32
+          description: Total number of pages
+        size:
+          type: integer
+          format: int32
+          minimum: 0
+          description: current page size (0-based)
+        number:
+          type: integer
+          format: int32
+          minimum: 0
+          description: current page number (0-based)
+
+    RoleInfo:
+      type: object
+      description: Role summary (id, name, description)
+      required: [ id, name, description ]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          description: Role name
+        description:
+          type: string
+          description: Role description
+    
+    CreateAccountRequest:
+      type: object
+      required: [ userId, email, username, password ]
+      description: Request to create an auth account. Used by user-service; userId is the domain user this account belongs to.
+      properties:
+        userId:
+          type: string
+          format: uuid
+          description: Domain user ID (the user this account is for)
+        email:
+          type: string
+          format: email
+          description: Account email (used for login)
+        username:
+          type: string
+          description: Username (used for login)
+        password:
+          type: string
+          format: password
+          description: Initial password
+          minLength: 1
+
+    RoleChangeToAccountRequest:
+      oneOf:
+      - type: object
+        description: Add role by name to account
+        required: [ role ]
+        properties:
+          role:
+            type: string
+            description: Role name (e.g. ADMIN, USER)
+        additionalProperties: false
+      - type: object
+        description: Remove role by UUID from account
+        required: [ roleId ]
+        properties:
+          roleId:
+            type: string
+            format: uuid
+            description: Role UUID
+        additionalProperties: false
