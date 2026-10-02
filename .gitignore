@@ -5,7 +5,6 @@
 
 # Build
 .gradle
-gradle/wrapper
 build
 **/build
 build-logic/.kotlin

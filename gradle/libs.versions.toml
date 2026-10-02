@@ -19,7 +19,7 @@ mapstruct = "1.6.3"
 
 [libraries]
 # Spring starters
-spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-webmvc" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
 spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
 spring-boot-starter-security = { module = "org.springframework.boot:spring-boot-starter-security" }
